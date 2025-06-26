@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  
+  /* Custom Brand Colors */
+  --color-dark-navy: #142333;
+  --color-medium-blue: #145da0;
+  --color-gold: #d6ad60;
+  --color-light-blue: #90adc6;
+  --color-cream: #f4ebd0;
+  --color-light-gray: #eff3f6;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Custom Font Classes */
+.font-kelvinch {
+  font-family: 'Kelvinch', serif;
+}
+
+.font-barlow {
+  font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
+}
+
+.font-barlow-bold {
+  font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+}
+
+.font-apple {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Custom Color Classes */
+.bg-brand-dark-navy { background-color: var(--color-dark-navy); }
+.bg-brand-medium-blue { background-color: var(--color-medium-blue); }
+.bg-brand-gold { background-color: var(--color-gold); }
+.bg-brand-light-blue { background-color: var(--color-light-blue); }
+.bg-brand-cream { background-color: var(--color-cream); }
+.bg-brand-light-gray { background-color: var(--color-light-gray); }
+
+.text-brand-dark-navy { color: var(--color-dark-navy); }
+.text-brand-medium-blue { color: var(--color-medium-blue); }
+.text-brand-gold { color: var(--color-gold); }
+.text-brand-light-blue { color: var(--color-light-blue); }
+.text-brand-cream { color: var(--color-cream); }
+.text-brand-light-gray { color: var(--color-light-gray); }
+
+.border-brand-dark-navy { border-color: var(--color-dark-navy); }
+.border-brand-medium-blue { border-color: var(--color-medium-blue); }
+.border-brand-gold { border-color: var(--color-gold); }
+.border-brand-light-blue { border-color: var(--color-light-blue); } 
