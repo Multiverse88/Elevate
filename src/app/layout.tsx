@@ -1,13 +1,18 @@
 import type { Metadata } from 'next'
-import { Barlow_Condensed } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const barlowCondensed = Barlow_Condensed({ 
+const inter = Inter({ 
   subsets: ['latin'],
-  weight: ['300', '400', '600', '700', '800', '900'],
-  variable: '--font-barlow-condensed'
+  variable: '--font-inter'
+})
+
+const poppins = Poppins({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins'
 })
 
 export const metadata: Metadata = {
@@ -22,10 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Kelvinch:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className={`${barlowCondensed.variable} font-barlow`}>
+      <body className={`${inter.variable} ${poppins.variable} font-inter`}>
         <Navbar />
         <main className="min-h-screen">
           {children}
