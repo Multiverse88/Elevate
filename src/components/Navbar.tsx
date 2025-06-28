@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -7,6 +7,29 @@ import { useLanguage } from '@/contexts/LanguageContext'
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+  const navRef = useRef<HTMLElement>(null)
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [])
 
   const navigation = [
     { name: t('nav.home'), href: '/' },
@@ -21,25 +44,25 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-white/90 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav ref={navRef} className="bg-white/90 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
                   <Image 
                     src="/images/logos/1.png" 
                     alt="Elevate Academia" 
-                    width={28}
-                    height={28}
-                    className="rounded-md"
+                    width={24}
+                    height={24}
+                    className="sm:w-7 sm:h-7 rounded-md"
                   />
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
+                <span className="text-base sm:text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
                   ELEVATE
                 </span>
                 <span className="text-xs font-medium text-gray-600 leading-tight -mt-1">
@@ -50,12 +73,12 @@ export default function Navbar() {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 relative group"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 relative group whitespace-nowrap"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-200 group-hover:w-full"></span>
@@ -64,11 +87,11 @@ export default function Navbar() {
           </div>
 
           {/* Right Side Icons */}
-          <div className="flex items-center space-x-4">
-            {/* Language Toggle Button */}
+          <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
+            {/* Language Toggle Button - More compact on mobile */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200"
+              className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200"
             >
               <span className="text-sm font-medium text-blue-700">
                 {language === 'id' ? '🇮🇩 ID' : '🇺🇸 EN'}
@@ -78,34 +101,54 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {/* Search Icon */}
-            <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200">
+            {/* Compact Language Toggle for Mobile */}
+            <button
+              onClick={toggleLanguage}
+              className="sm:hidden flex items-center px-2 py-1 rounded-md bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200"
+            >
+              <span className="text-xs font-medium text-blue-700">
+                {language === 'id' ? '🇮🇩' : '🇺🇸'}
+              </span>
+            </button>
+
+            {/* Search Icon - Hidden on mobile */}
+            <button className="hidden lg:block p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
 
-            {/* User Icon */}
-            <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200">
+            {/* User Icon - Hidden on mobile */}
+            <button className="hidden lg:block p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </button>
 
-            {/* Consultation Button */}
+            {/* Consultation Button - Responsive sizing */}
             <Link
               href="/kontak"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="hidden sm:inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              {t('nav.consultation')}
+              <span className="hidden lg:inline">{t('nav.consultation')}</span>
+              <span className="lg:hidden">Konsultasi</span>
+            </Link>
+
+            {/* Mobile Consultation Button - Compact */}
+            <Link
+              href="/kontak"
+              className="sm:hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1.5 rounded-md text-xs font-medium"
+            >
+              Chat
             </Link>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200"
+              className="md:hidden p-1.5 text-gray-600 hover:text-blue-600 transition-colors duration-200 rounded-md hover:bg-gray-100"
+              aria-label="Toggle navigation menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -118,45 +161,72 @@ export default function Navbar() {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200/50">
-            <div className="flex flex-col space-y-3">
+          <>
+            {/* Mobile menu backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/20 z-40 md:hidden"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            <div className="md:hidden py-4 border-t border-gray-200/50 bg-white/95 backdrop-blur-sm relative z-50">
+            <div className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 py-2"
+                  className="text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 py-3 px-2 rounded-lg"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
               
-              {/* Language Toggle in Mobile Menu */}
-              <div className="pt-2 border-t border-gray-200/50">
+              {/* Additional mobile menu items */}
+              <div className="pt-3 mt-3 border-t border-gray-200/50 space-y-3">
+                {/* Search in Mobile Menu */}
+                <button className="flex items-center space-x-3 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 py-3 px-2 rounded-lg w-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <span>Pencarian</span>
+                </button>
+                
+                {/* Profile in Mobile Menu */}
+                <button className="flex items-center space-x-3 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 py-3 px-2 rounded-lg w-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span>Profil</span>
+                </button>
+                
+                {/* Language Toggle in Mobile Menu */}
                 <button
-                  onClick={toggleLanguage}
-                  className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200"
+                  onClick={() => {
+                    toggleLanguage()
+                    setIsMenuOpen(false)
+                  }}
+                  className="flex items-center space-x-3 px-2 py-3 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200 w-full"
                 >
-                  <span className="text-sm font-medium text-blue-700">
-                    {language === 'id' ? '🇮🇩 Indonesia' : '🇺🇸 English'}
-                  </span>
-                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                   </svg>
+                  <span className="text-sm font-medium text-blue-700">
+                    {language === 'id' ? '🇮🇩 Bahasa Indonesia' : '🇺🇸 English'}
+                  </span>
                 </button>
               </div>
               
-              <div className="pt-4 border-t border-gray-200/50">
+              <div className="pt-4 mt-4 border-t border-gray-200/50">
                 <Link
                   href="/kontak"
-                  className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg"
+                  className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg w-full"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t('nav.consultation')}
                 </Link>
               </div>
             </div>
-          </div>
+            </div>
+          </>
         )}
       </div>
     </nav>
