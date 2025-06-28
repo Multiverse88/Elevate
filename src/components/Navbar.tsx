@@ -30,7 +30,7 @@ export default function Navbar() {
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
                   <Image 
-                    src="/images/logos/Logo Elevate.png" 
+                    src="/images/logos/1.png" 
                     alt="Elevate Academia" 
                     width={28}
                     height={28}

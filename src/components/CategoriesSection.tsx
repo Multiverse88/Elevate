@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function CategoriesSection() {
@@ -7,6 +8,7 @@ export default function CategoriesSection() {
 
   const categories = [
     { 
+      id: 'skripsi',
       title: t('categories.skripsi'), 
       icon: '📝',
       bgColor: 'bg-gradient-to-br from-blue-50 to-purple-50',
@@ -14,6 +16,7 @@ export default function CategoriesSection() {
       textColor: 'text-blue-700'
     },
     { 
+      id: 'jurnal',
       title: t('categories.jurnal'), 
       icon: '📄',
       bgColor: 'bg-gradient-to-br from-green-50 to-blue-50',
@@ -21,6 +24,7 @@ export default function CategoriesSection() {
       textColor: 'text-green-700'
     },
     { 
+      id: 'artikel',
       title: t('categories.artikel'), 
       icon: '✍️',
       bgColor: 'bg-gradient-to-br from-purple-50 to-pink-50',
@@ -28,6 +32,7 @@ export default function CategoriesSection() {
       textColor: 'text-purple-700'
     },
     { 
+      id: 'workshop',
       title: t('categories.workshop'), 
       icon: '🎓',
       bgColor: 'bg-gradient-to-br from-orange-50 to-red-50',
@@ -35,6 +40,7 @@ export default function CategoriesSection() {
       textColor: 'text-orange-700'
     },
     { 
+      id: 'konsultasi',
       title: t('categories.konsultasi'), 
       icon: '🔬',
       bgColor: 'bg-gradient-to-br from-indigo-50 to-blue-50',
@@ -42,6 +48,7 @@ export default function CategoriesSection() {
       textColor: 'text-indigo-700'
     },
     { 
+      id: 'mentoring',
       title: t('categories.mentoring'), 
       icon: '👨‍🏫',
       bgColor: 'bg-gradient-to-br from-teal-50 to-green-50',
@@ -71,16 +78,17 @@ export default function CategoriesSection() {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
             {t('categories.subtitle')}
           </p>
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105">
+          <Link href="/harga" className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105">
             {t('categories.all')} →
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, idx) => (
-            <div 
-              key={idx} 
-              className={`${category.bgColor} rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer border border-white shadow-lg hover:shadow-xl group`}
+            <Link 
+              key={idx}
+              href={`/harga?category=${category.id}`}
+              className={`${category.bgColor} rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer border border-white shadow-lg hover:shadow-xl group block`}
             >
               <div className={`${category.iconBg} w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 <span className="text-3xl">{category.icon}</span>
@@ -88,7 +96,7 @@ export default function CategoriesSection() {
               <h3 className={`text-xl font-bold text-center ${category.textColor} group-hover:text-gray-900 transition-colors duration-300`}>
                 {category.title}
               </h3>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
