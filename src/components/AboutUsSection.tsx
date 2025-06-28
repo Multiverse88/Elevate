@@ -3,25 +3,27 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-const stats = [
-  { number: '500+', label: 'Klien Puas', icon: '👨‍🎓' },
-  { number: '50+', label: 'Mentor Ahli', icon: '👨‍🏫' },
-  { number: '100+', label: 'Publikasi', icon: '📄' },
-  { number: '95%', label: 'Tingkat Sukses', icon: '🏆' },
-]
-
 export default function AboutUsSection() {
-  const sectionRef = useRef(null)
-  const titleRef = useRef(null)
-  const textRef = useRef(null)
-  const statsRef = useRef([])
-  const floatingElementsRef = useRef([])
+  const sectionRef = useRef<HTMLElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const textRef = useRef<HTMLParagraphElement>(null)
+  const statsRef = useRef<(HTMLDivElement | null)[]>([])
+  const floatingElementsRef = useRef<(HTMLDivElement | null)[]>([])
+  const { t } = useLanguage()
+
+  const stats = [
+    { number: '500+', label: t('about.stats.clients'), icon: '👨‍🎓' },
+    { number: '50+', label: t('about.stats.mentors'), icon: '👨‍🏫' },
+    { number: '100+', label: t('about.stats.publications'), icon: '📄' },
+    { number: '95%', label: t('about.stats.success'), icon: '🏆' },
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -111,7 +113,7 @@ export default function AboutUsSection() {
     }, sectionRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [t])
 
   return (
     <section ref={sectionRef} className="py-20 bg-gradient-to-br from-white via-blue-50 to-indigo-100 relative overflow-hidden">
@@ -149,15 +151,13 @@ export default function AboutUsSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-3 rounded-full text-sm font-medium shadow-sm border border-blue-200 mb-6">
             <span className="mr-2">🌟</span>
-            Tentang Kami
+            {t('about.badge')}
           </div>
           <h2 ref={titleRef} className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Tentang <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Elevate Academia</span>
+            {t('about.title')}
           </h2>
           <p ref={textRef} className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Elevate Academia adalah platform terdepan yang berkomitmen membantu akademisi, mahasiswa, 
-            dan peneliti dalam mencapai kesuksesan akademik. Dengan tim mentor berpengalaman dan 
-            metodologi terbukti, kami telah membantu ribuan individu meraih prestasi terbaik mereka.
+            {t('about.subtitle')}
           </p>
         </div>
 
@@ -192,11 +192,9 @@ export default function AboutUsSection() {
           </div>
           
           <div className="relative z-10 text-center">
-            <h3 className="text-3xl font-bold mb-6">Misi Kami</h3>
+            <h3 className="text-3xl font-bold mb-6">{t('about.mission.title')}</h3>
             <p className="text-xl leading-relaxed max-w-4xl mx-auto">
-              "Memberdayakan setiap individu untuk mencapai potensi akademik tertinggi mereka 
-              melalui bimbingan berkualitas, mentoring personal, dan dukungan berkelanjutan 
-              dalam perjalanan pendidikan mereka."
+              "{t('about.mission.text')}"
             </p>
           </div>
         </div>

@@ -3,40 +3,42 @@ import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-const services = [
-  {
-    title: 'Bimbingan Penulisan Naskah',
-    desc: 'Skripsi, artikel jurnal, esai, disertasi, dll.',
-    icon: '/images/icons/suitcase.png',
-    color: 'from-blue-500 to-purple-600',
-    bgColor: 'bg-blue-50',
-  },
-  {
-    title: 'Pendampingan Publikasi Ilmiah',
-    desc: 'Submit & revisi untuk SINTA, Scopus, WoS.',
-    icon: '/images/icons/book.png',
-    color: 'from-green-500 to-blue-600',
-    bgColor: 'bg-green-50',
-  },
-  {
-    title: 'Event Organizer Workshop Akademik',
-    desc: 'Webinar, kuliah tamu, pelatihan menulis, dll.',
-    icon: '/images/icons/video-conference.png',
-    color: 'from-orange-500 to-red-600',
-    bgColor: 'bg-orange-50',
-  },
-]
-
 export default function ServicesSection() {
-  const sectionRef = useRef(null)
-  const titleRef = useRef(null)
-  const cardsRef = useRef([])
+  const sectionRef = useRef<HTMLElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+  const { t } = useLanguage()
+
+  const services = [
+    {
+      title: t('services.writing'),
+      desc: t('services.writing.desc'),
+      icon: '/images/icons/suitcase.png',
+      color: 'from-blue-500 to-purple-600',
+      bgColor: 'bg-blue-50',
+    },
+    {
+      title: t('services.publication'),
+      desc: t('services.publication.desc'),
+      icon: '/images/icons/book.png',
+      color: 'from-green-500 to-blue-600',
+      bgColor: 'bg-green-50',
+    },
+    {
+      title: t('services.workshop'),
+      desc: t('services.workshop.desc'),
+      icon: '/images/icons/video-conference.png',
+      color: 'from-orange-500 to-red-600',
+      bgColor: 'bg-orange-50',
+    },
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -81,12 +83,14 @@ export default function ServicesSection() {
               duration: 0.3,
               ease: "power2.out"
             })
-            gsap.to(icon, {
-              rotation: 360,
-              scale: 1.2,
-              duration: 0.6,
-              ease: "back.out(1.7)"
-            })
+            if (icon) {
+              gsap.to(icon, {
+                rotation: 360,
+                scale: 1.2,
+                duration: 0.6,
+                ease: "back.out(1.7)"
+              })
+            }
           })
           
           card.addEventListener('mouseleave', () => {
@@ -96,12 +100,14 @@ export default function ServicesSection() {
               duration: 0.3,
               ease: "power2.out"
             })
-            gsap.to(icon, {
-              rotation: 0,
-              scale: 1,
-              duration: 0.3,
-              ease: "power2.out"
-            })
+            if (icon) {
+              gsap.to(icon, {
+                rotation: 0,
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out"
+              })
+            }
           })
         }
       })
@@ -109,7 +115,7 @@ export default function ServicesSection() {
     }, sectionRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [t])
 
   return (
     <section ref={sectionRef} id="layanan" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
@@ -122,7 +128,7 @@ export default function ServicesSection() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <h2 ref={titleRef} className="text-4xl lg:text-5xl font-bold text-center mb-16 text-gray-900">
-          Jelajahi <span className="text-blue-600">Layanan</span> Kami
+          {t('services.title')}
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

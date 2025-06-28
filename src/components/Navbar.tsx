@@ -2,17 +2,23 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
 
   const navigation = [
-    { name: 'BERANDA', href: '/' },
-    { name: 'PROFILE', href: '/profile' },
-    { name: 'LAYANAN', href: '/layanan' },
-    { name: 'ARTIKEL', href: '/artikel' },
-    { name: 'KONTAK', href: '/kontak' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.profile'), href: '/profile' },
+    { name: t('nav.services'), href: '/layanan' },
+    { name: t('nav.articles'), href: '/artikel' },
+    { name: t('nav.contact'), href: '/kontak' },
   ]
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'id' ? 'en' : 'id')
+  }
 
   return (
     <nav className="bg-white/90 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-50 shadow-sm">
@@ -59,6 +65,19 @@ export default function Navbar() {
 
           {/* Right Side Icons */}
           <div className="flex items-center space-x-4">
+            {/* Language Toggle Button */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200"
+            >
+              <span className="text-sm font-medium text-blue-700">
+                {language === 'id' ? '🇮🇩 ID' : '🇺🇸 EN'}
+              </span>
+              <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+            </button>
+
             {/* Search Icon */}
             <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +97,7 @@ export default function Navbar() {
               href="/kontak"
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              Konsultasi Gratis
+              {t('nav.consultation')}
             </Link>
 
             {/* Mobile menu button */}
@@ -111,13 +130,29 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Language Toggle in Mobile Menu */}
+              <div className="pt-2 border-t border-gray-200/50">
+                <button
+                  onClick={toggleLanguage}
+                  className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200"
+                >
+                  <span className="text-sm font-medium text-blue-700">
+                    {language === 'id' ? '🇮🇩 Indonesia' : '🇺🇸 English'}
+                  </span>
+                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                </button>
+              </div>
+              
               <div className="pt-4 border-t border-gray-200/50">
                 <Link
                   href="/kontak"
                   className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Konsultasi Gratis
+                  {t('nav.consultation')}
                 </Link>
               </div>
             </div>

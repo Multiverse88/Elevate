@@ -1,23 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter'
-})
-
-const poppins = Poppins({ 
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins'
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Elevate Academia - The Best Platform for Online Learning',
-  description: 'Find the best course online and learn wherever you are and at any time.',
+  title: 'Elevate Academia - Platform Akademik Terdepan',
+  description: 'Solusi Profesional untuk Naskah dan Publikasi Ilmiah. Kami berkomitmen membantu Anda mencapai kesuksesan akademik.',
 }
 
 export default function RootLayout({
@@ -26,13 +18,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} font-inter`}>
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+    <html lang="id">
+      <body className={inter.className}>
+        <LanguageProvider>
+          <Navbar />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )

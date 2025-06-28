@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FloatingDecorations from './FloatingDecorations'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
@@ -10,13 +11,14 @@ if (typeof window !== 'undefined') {
 }
 
 export default function ContactSection() {
-  const sectionRef = useRef(null)
-  const titleRef = useRef(null)
-  const buttonRef = useRef(null)
-  const modalRef = useRef(null)
-  const modalContentRef = useRef(null)
-  const formFieldsRef = useRef([])
+  const sectionRef = useRef<HTMLElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const modalContentRef = useRef<HTMLDivElement>(null)
+  const formFieldsRef = useRef<(HTMLDivElement | null)[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -161,11 +163,11 @@ export default function ContactSection() {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center">
             <h2 ref={titleRef} className="text-5xl lg:text-6xl font-bold text-white mb-8">
-              Siap untuk <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">Elevate</span> Perjalanan Akademik Anda?
+              {t('contact.title')}
             </h2>
             
             <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
-              Bergabunglah dengan ribuan mahasiswa dan peneliti yang telah merasakan transformasi akademik bersama Elevate Academia.
+              {t('contact.subtitle')}
             </p>
             
             <button
@@ -179,7 +181,7 @@ export default function ContactSection() {
               {/* Button content */}
               <div className="relative z-10 flex items-center">
                 <span className="mr-3 text-2xl group-hover:animate-bounce">📞</span>
-                <span>Hubungi Kami Sekarang</span>
+                <span>{t('contact.button')}</span>
                 <span className="ml-3 group-hover:translate-x-1 transition-transform duration-300">→</span>
               </div>
               
@@ -215,10 +217,10 @@ export default function ContactSection() {
             <div className="text-center mb-8">
               <div className="text-4xl mb-4">🌟</div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                Mari Berkolaborasi!
+                {t('contact.modal.title')}
               </h3>
               <p className="text-gray-600">
-                Ceritakan kebutuhan akademik Anda dan biarkan kami membantu mencapai kesuksesan bersama.
+                {t('contact.modal.subtitle')}
               </p>
             </div>
 
@@ -227,67 +229,67 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div ref={el => { formFieldsRef.current[0] = el }}>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Nama Lengkap *
+                    {t('contact.form.name')}
                   </label>
                   <input
                     type="text"
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="Masukkan nama lengkap Anda"
+                    placeholder={t('contact.form.placeholder.name')}
                   />
                 </div>
 
                 <div ref={el => { formFieldsRef.current[1] = el }}>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email *
+                    {t('contact.form.email')}
                   </label>
                   <input
                     type="email"
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="email@example.com"
+                    placeholder={t('contact.form.placeholder.email')}
                   />
                 </div>
               </div>
 
               <div ref={el => { formFieldsRef.current[2] = el }}>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Nomor Telepon
+                  {t('contact.form.phone')}
                 </label>
                 <input
                   type="tel"
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="0812-3456-7890"
+                  placeholder={t('contact.form.placeholder.phone')}
                 />
               </div>
 
               <div ref={el => { formFieldsRef.current[3] = el }}>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Jenis Layanan *
+                  {t('contact.form.service')}
                 </label>
                 <select
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 >
-                  <option value="">Pilih layanan yang Anda butuhkan</option>
-                  <option value="skripsi">Bimbingan Penulisan Skripsi</option>
-                  <option value="jurnal">Publikasi Jurnal Ilmiah</option>
-                  <option value="artikel">Penulisan Artikel</option>
-                  <option value="workshop">Workshop Akademik</option>
-                  <option value="konsultasi">Konsultasi Penelitian</option>
-                  <option value="mentoring">Mentoring Personal</option>
+                  <option value="">{t('contact.form.placeholder.service')}</option>
+                  <option value="skripsi">{t('categories.skripsi')}</option>
+                  <option value="jurnal">{t('categories.jurnal')}</option>
+                  <option value="artikel">{t('categories.artikel')}</option>
+                  <option value="workshop">{t('categories.workshop')}</option>
+                  <option value="konsultasi">{t('categories.konsultasi')}</option>
+                  <option value="mentoring">{t('categories.mentoring')}</option>
                 </select>
               </div>
 
               <div ref={el => { formFieldsRef.current[4] = el }}>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Pesan *
+                  {t('contact.form.message')}
                 </label>
                 <textarea
                   required
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Ceritakan kebutuhan akademik Anda secara detail..."
+                  placeholder={t('contact.form.placeholder.message')}
                 ></textarea>
               </div>
 
@@ -295,7 +297,7 @@ export default function ContactSection() {
                 type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105"
               >
-                Kirim Pesan
+                {t('contact.form.submit')}
               </button>
             </form>
           </div>

@@ -1,29 +1,33 @@
+'use client'
 import Image from 'next/image'
-
-const features = [
-  { 
-    title: 'Mentor Berpengalaman', 
-    desc: 'Tim mentor kami adalah ahli di bidang masing-masing dengan pengalaman akademik yang luas.',
-    icon: '👨‍🏫'
-  },
-  { 
-    title: 'Sertifikasi Profesional', 
-    desc: 'Dapatkan sertifikasi dan pengakuan profesional dari mentor berpengalaman.',
-    icon: '🏆'
-  },
-  { 
-    title: 'Metode Kreatif', 
-    desc: 'Kembangkan kemampuan kreatif Anda dengan metode pembelajaran yang unik dan efektif.',
-    icon: '🧠'
-  },
-  { 
-    title: 'Konsultasi Fleksibel', 
-    desc: 'Akses konsultasi dan bimbingan kapan saja, di mana saja sesuai kebutuhan Anda.',
-    icon: '🎥'
-  },
-]
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function CoachingSection() {
+  const { t } = useLanguage()
+
+  const features = [
+    { 
+      title: t('coaching.feature1.title'), 
+      desc: t('coaching.feature1.desc'),
+      icon: '👨‍🏫'
+    },
+    { 
+      title: t('coaching.feature2.title'), 
+      desc: t('coaching.feature2.desc'),
+      icon: '🏆'
+    },
+    { 
+      title: t('coaching.feature3.title'), 
+      desc: t('coaching.feature3.desc'),
+      icon: '🧠'
+    },
+    { 
+      title: t('coaching.feature4.title'), 
+      desc: t('coaching.feature4.desc'),
+      icon: '🎥'
+    },
+  ]
+
   return (
     <section className="py-20 bg-gradient-to-br from-white via-blue-50 to-indigo-100 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -57,18 +61,15 @@ export default function CoachingSection() {
           <div className="space-y-8">
             <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-3 rounded-full text-sm font-medium shadow-sm border border-blue-200">
               <span className="mr-2">🎯</span>
-              Tentang Kami
+              {t('coaching.badge')}
             </div>
             
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              Kami Menyediakan Bimbingan oleh{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Mentor Ahli</span>
+              {t('coaching.title')}
             </h2>
             
             <p className="text-gray-600 text-lg leading-relaxed">
-              Elevate Academia menghadirkan tim mentor berpengalaman yang siap membantu Anda mencapai 
-              kesuksesan akademik. Dengan metodologi yang terbukti efektif dan pendekatan personal, 
-              kami memastikan setiap klien mendapatkan bimbingan terbaik sesuai kebutuhan mereka.
+              {t('coaching.subtitle')}
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -90,7 +91,7 @@ export default function CoachingSection() {
             </div>
             
             <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105">
-              Pelajari Lebih Lanjut →
+              {t('coaching.learn')} →
             </button>
           </div>
         </div>
