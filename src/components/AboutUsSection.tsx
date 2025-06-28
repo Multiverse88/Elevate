@@ -10,10 +10,10 @@ if (typeof window !== 'undefined') {
 }
 
 const stats = [
-  { number: '500+', label: 'Happy Students', icon: '👨‍🎓' },
-  { number: '50+', label: 'Expert Tutors', icon: '👨‍🏫' },
-  { number: '100+', label: 'Research Papers', icon: '📄' },
-  { number: '95%', label: 'Success Rate', icon: '🏆' },
+  { number: '500+', label: 'Klien Puas', icon: '👨‍🎓' },
+  { number: '50+', label: 'Mentor Ahli', icon: '👨‍🏫' },
+  { number: '100+', label: 'Publikasi', icon: '📄' },
+  { number: '95%', label: 'Tingkat Sukses', icon: '🏆' },
 ]
 
 export default function AboutUsSection() {
@@ -147,8 +147,12 @@ export default function AboutUsSection() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-3 rounded-full text-sm font-medium shadow-sm border border-blue-200 mb-6">
+            <span className="mr-2">🌟</span>
+            Tentang Kami
+          </div>
           <h2 ref={titleRef} className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Tentang <span className="text-blue-600">Elevate Academia</span>
+            Tentang <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Elevate Academia</span>
           </h2>
           <p ref={textRef} className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Elevate Academia adalah platform terdepan yang berkomitmen membantu akademisi, mahasiswa, 
@@ -163,12 +167,12 @@ export default function AboutUsSection() {
             <div 
               key={idx}
               ref={el => { statsRef.current[idx] = el }}
-              className="bg-white p-6 rounded-2xl shadow-lg text-center group cursor-pointer hover:shadow-xl transition-all duration-300"
+              className="bg-white p-6 rounded-2xl shadow-lg text-center group cursor-pointer hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
               <div className="text-4xl mb-3 group-hover:animate-bounce">
                 {stat.icon}
               </div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
+              <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2">
                 {stat.number}
               </div>
               <div className="text-gray-600 font-medium">
@@ -179,7 +183,7 @@ export default function AboutUsSection() {
         </div>
 
         {/* Mission Statement */}
-        <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 lg:p-12 rounded-3xl relative overflow-hidden">
+        <div className="mt-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white p-8 lg:p-12 rounded-3xl relative overflow-hidden shadow-2xl">
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-10 right-10 w-20 h-20 border-2 border-white rounded-full"></div>

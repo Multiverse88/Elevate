@@ -167,30 +167,30 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <div className="inline-flex items-center bg-blue-100 text-blue-800 px-6 py-3 rounded-full text-sm font-medium shadow-sm">
+            <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-3 rounded-full text-sm font-medium shadow-sm border border-blue-200">
               <span className="mr-2">✨</span>
-              100% Satisfaction Guarantee
+              Platform Akademik Terdepan
             </div>
             
             <h1 ref={titleRef} className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Learn <span className="text-blue-600">Skills</span> From<br />
-              Our Top Instructors
+              Tingkatkan <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Prestasi</span> Akademik<br />
+              Bersama Para Ahli
             </h1>
             
             <p ref={subtitleRef} className="text-gray-600 text-lg leading-relaxed max-w-lg">
-              Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis. Borem ipsum dolor sit amet consectetur adipiscing area we followt.
+              Elevate Academia membantu mahasiswa, peneliti, dan akademisi mencapai kesuksesan melalui bimbingan profesional, mentoring personal, dan dukungan publikasi ilmiah berkualitas tinggi.
             </p>
             
             <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-lg transform hover:scale-105">
-                EXPLORE COURSES
+              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105 hover:shadow-xl">
+                JELAJAHI LAYANAN
               </button>
               <div className="flex items-center text-gray-700">
                 <div className="flex items-center mr-4">
                   <span className="text-2xl mr-2">📞</span>
                   <div>
-                    <p className="text-sm text-gray-500">Have any Question?</p>
-                    <p className="font-semibold">993-00-67777</p>
+                    <p className="text-sm text-gray-500">Ada Pertanyaan?</p>
+                    <p className="font-semibold">0831-2145-1587</p>
                   </div>
                 </div>
               </div>
@@ -215,30 +215,30 @@ export default function HeroSection() {
             {/* Floating Stats Cards */}
             <div 
               ref={el => floatingElementsRef.current[0] = el}
-              className="absolute top-20 -left-10 bg-white p-4 rounded-xl shadow-lg border"
+              className="absolute top-20 -left-10 bg-white p-4 rounded-xl shadow-lg border border-gray-100"
             >
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-blue-100 rounded-full flex items-center justify-center mr-3">
                   <span className="text-green-600 text-2xl">👥</span>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Total Students</p>
-                  <p className="text-2xl font-bold text-gray-900">15K</p>
+                  <p className="text-sm text-gray-500">Total Klien</p>
+                  <p className="text-2xl font-bold text-gray-900">500+</p>
                 </div>
               </div>
             </div>
 
             <div 
               ref={el => floatingElementsRef.current[1] = el}
-              className="absolute top-40 -right-10 bg-white p-4 rounded-xl shadow-lg border"
+              className="absolute top-40 -right-10 bg-white p-4 rounded-xl shadow-lg border border-gray-100"
             >
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mr-3">
                   <span className="text-purple-600 text-2xl">🎓</span>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Complete Graduation</p>
-                  <p className="text-2xl font-bold text-gray-900">34K</p>
+                  <p className="text-sm text-gray-500">Publikasi Berhasil</p>
+                  <p className="text-2xl font-bold text-gray-900">100+</p>
                 </div>
               </div>
             </div>
@@ -248,21 +248,14 @@ export default function HeroSection() {
               ref={el => floatingElementsRef.current[2] = el}
               className="absolute -top-5 right-20 bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-lg shadow-lg"
             >
-              <span className="text-2xl text-white">📚</span>
+              <span className="text-white text-2xl">📚</span>
             </div>
-            
+
             <div 
               ref={el => floatingElementsRef.current[3] = el}
-              className="absolute bottom-10 -left-5 bg-gradient-to-br from-orange-400 to-red-500 p-3 rounded-lg shadow-lg"
+              className="absolute bottom-20 -left-5 bg-gradient-to-br from-green-500 to-blue-600 p-3 rounded-lg shadow-lg"
             >
-              <span className="text-2xl text-white">✏️</span>
-            </div>
-            
-            <div 
-              ref={el => floatingElementsRef.current[4] = el}
-              className="absolute bottom-32 right-10 bg-gradient-to-br from-green-400 to-blue-500 p-3 rounded-lg shadow-lg"
-            >
-              <span className="text-2xl text-white">🎯</span>
+              <span className="text-white text-2xl">✍️</span>
             </div>
           </div>
         </div>

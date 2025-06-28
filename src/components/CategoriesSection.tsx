@@ -2,71 +2,86 @@ import Image from 'next/image'
 
 const categories = [
   { 
-    title: 'Business', 
-    icon: '🚀',
-    bgColor: 'bg-gradient-to-br from-brand-light-blue to-brand-medium-blue bg-opacity-20',
-    iconBg: 'bg-brand-light-gray'
+    title: 'Penulisan Skripsi', 
+    icon: '📝',
+    bgColor: 'bg-gradient-to-br from-blue-50 to-purple-50',
+    iconBg: 'bg-gradient-to-br from-blue-100 to-purple-100',
+    textColor: 'text-blue-700'
   },
   { 
-    title: 'English', 
-    icon: '🎨',
-    bgColor: 'bg-gradient-to-br from-brand-cream to-brand-gold bg-opacity-30',
-    iconBg: 'bg-brand-cream'
+    title: 'Publikasi Jurnal', 
+    icon: '📄',
+    bgColor: 'bg-gradient-to-br from-green-50 to-blue-50',
+    iconBg: 'bg-gradient-to-br from-green-100 to-blue-100',
+    textColor: 'text-green-700'
   },
   { 
-    title: 'Finance', 
-    icon: '📊',
-    bgColor: 'bg-gradient-to-br from-brand-medium-blue to-brand-dark-navy bg-opacity-20',
-    iconBg: 'bg-brand-light-gray'
+    title: 'Penulisan Artikel', 
+    icon: '✍️',
+    bgColor: 'bg-gradient-to-br from-purple-50 to-pink-50',
+    iconBg: 'bg-gradient-to-br from-purple-100 to-pink-100',
+    textColor: 'text-purple-700'
   },
   { 
-    title: 'Content Writing', 
-    icon: '💻',
-    bgColor: 'bg-gradient-to-br from-brand-gold to-brand-cream bg-opacity-40',
-    iconBg: 'bg-brand-gold bg-opacity-20'
+    title: 'Workshop Akademik', 
+    icon: '🎓',
+    bgColor: 'bg-gradient-to-br from-orange-50 to-red-50',
+    iconBg: 'bg-gradient-to-br from-orange-100 to-red-100',
+    textColor: 'text-orange-700'
   },
   { 
-    title: 'Development', 
-    icon: '⚛️',
-    bgColor: 'bg-gradient-to-br from-brand-light-blue to-brand-light-gray',
-    iconBg: 'bg-brand-light-blue bg-opacity-30'
+    title: 'Konsultasi Penelitian', 
+    icon: '🔬',
+    bgColor: 'bg-gradient-to-br from-indigo-50 to-blue-50',
+    iconBg: 'bg-gradient-to-br from-indigo-100 to-blue-100',
+    textColor: 'text-indigo-700'
   },
   { 
-    title: 'Art & Design', 
-    icon: '🎭',
-    bgColor: 'bg-gradient-to-br from-brand-cream to-brand-light-gray',
-    iconBg: 'bg-brand-cream'
+    title: 'Mentoring Personal', 
+    icon: '👨‍🏫',
+    bgColor: 'bg-gradient-to-br from-teal-50 to-green-50',
+    iconBg: 'bg-gradient-to-br from-teal-100 to-green-100',
+    textColor: 'text-teal-700'
   },
 ]
 
 export default function CategoriesSection() {
   return (
-    <section className="py-20 bg-brand-light-gray">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-5"></div>
+        <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-green-400 to-blue-500 rounded-full opacity-5"></div>
+        <div className="absolute top-40 right-40 w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 transform rotate-45 opacity-5"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-brand-gold bg-opacity-20 text-brand-dark-navy px-4 py-2 rounded-full text-sm font-medium mb-6 font-barlow">
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-3 rounded-full text-sm font-medium shadow-sm border border-blue-200 mb-6">
             <span className="mr-2">📚</span>
-            Courses Details
+            Layanan Kami
           </div>
-          <h2 className="text-4xl font-bold text-brand-dark-navy mb-6 font-kelvinch">
-            Explore Our Categories
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Jelajahi <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Kategori</span> Layanan
           </h2>
-          <p className="text-brand-dark-navy opacity-70 text-lg max-w-2xl mx-auto mb-8 font-barlow">
-            A real estate mobile app designed by our company elite and also lorem  
-            corporis, consequatur sunt unde
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
+            Kami menyediakan berbagai layanan akademik berkualitas tinggi untuk membantu Anda mencapai kesuksesan dalam perjalanan pendidikan dan penelitian.
           </p>
-          <button className="bg-brand-medium-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-dark-navy transition-all font-barlow-bold">
-            All Categories →
+          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105">
+            Semua Layanan →
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, idx) => (
-            <div key={idx} className={`${category.bgColor} rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer border border-white border-opacity-50`}>
-              <div className={`${category.iconBg} w-16 h-16 rounded-xl flex items-center justify-center mb-6`}>
+            <div 
+              key={idx} 
+              className={`${category.bgColor} rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer border border-white shadow-lg hover:shadow-xl group`}
+            >
+              <div className={`${category.iconBg} w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 <span className="text-3xl">{category.icon}</span>
               </div>
-              <h3 className="text-xl font-bold text-brand-dark-navy text-center font-barlow-bold">
+              <h3 className={`text-xl font-bold text-center ${category.textColor} group-hover:text-gray-900 transition-colors duration-300`}>
                 {category.title}
               </h3>
             </div>

@@ -161,7 +161,7 @@ export default function ContactSection() {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center">
             <h2 ref={titleRef} className="text-5xl lg:text-6xl font-bold text-white mb-8">
-              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">Elevate</span> Your Academic Journey?
+              Siap untuk <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">Elevate</span> Perjalanan Akademik Anda?
             </h2>
             
             <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
@@ -252,87 +252,52 @@ export default function ContactSection() {
 
               <div ref={el => { formFieldsRef.current[2] = el }}>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Nomor WhatsApp
+                  Nomor Telepon
                 </label>
                 <input
                   type="tel"
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="08xxxxxxxxxx"
+                  placeholder="0812-3456-7890"
                 />
               </div>
 
               <div ref={el => { formFieldsRef.current[3] = el }}>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Layanan yang Dibutuhkan *
+                  Jenis Layanan *
                 </label>
-                <select 
+                <select
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 >
-                  <option value="">Pilih layanan</option>
-                  <option value="penulisan">Bimbingan Penulisan Naskah</option>
-                  <option value="publikasi">Pendampingan Publikasi Ilmiah</option>
-                  <option value="workshop">Event Organizer Workshop Akademik</option>
-                  <option value="konsultasi">Konsultasi Akademik</option>
+                  <option value="">Pilih layanan yang Anda butuhkan</option>
+                  <option value="skripsi">Bimbingan Penulisan Skripsi</option>
+                  <option value="jurnal">Publikasi Jurnal Ilmiah</option>
+                  <option value="artikel">Penulisan Artikel</option>
+                  <option value="workshop">Workshop Akademik</option>
+                  <option value="konsultasi">Konsultasi Penelitian</option>
+                  <option value="mentoring">Mentoring Personal</option>
                 </select>
               </div>
 
               <div ref={el => { formFieldsRef.current[4] = el }}>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Pesan Detail *
+                  Pesan *
                 </label>
                 <textarea
                   required
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Jelaskan kebutuhan Anda secara detail..."
+                  placeholder="Ceritakan kebutuhan akademik Anda secara detail..."
                 ></textarea>
               </div>
 
-              {/* Submit button */}
-              <div ref={el => { formFieldsRef.current[5] = el }} className="flex gap-4 pt-4">
-                <button
-                  type="button"
-                  onClick={closeModal}
-                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-colors duration-200"
-                >
-                  Batal
-                </button>
-                <button
-                  type="submit"
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg"
-                >
-                  Kirim Pesan 🚀
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105"
+              >
+                Kirim Pesan
+              </button>
             </form>
-
-            {/* Contact info */}
-            <div ref={el => { formFieldsRef.current[6] = el }} className="mt-8 pt-6 border-t border-gray-200">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div className="flex items-center justify-center">
-                  <span className="text-2xl mr-2">📧</span>
-                  <div className="text-sm">
-                    <div className="font-semibold text-gray-900">Email</div>
-                    <div className="text-gray-600">info@elevateacademia.com</div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center">
-                  <span className="text-2xl mr-2">📱</span>
-                  <div className="text-sm">
-                    <div className="font-semibold text-gray-900">WhatsApp</div>
-                    <div className="text-gray-600">+62 812-3456-7890</div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center">
-                  <span className="text-2xl mr-2">🕒</span>
-                  <div className="text-sm">
-                    <div className="font-semibold text-gray-900">Jam Operasional</div>
-                    <div className="text-gray-600">Senin-Jumat 09:00-17:00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       )}
