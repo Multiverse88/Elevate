@@ -1,0 +1,16 @@
+export const searchableItems = [
+  { type: 'page', title: 'Beranda', href: '/' },
+  { type: 'page', title: 'Profil', href: '/profile' },
+  { type: 'page', title: 'Layanan', href: '/layanan' },
+  { type: 'page', title: 'Artikel', href: '/artikel' },
+  { type: 'page', title: 'Kontak', href: '/kontak' },
+  { type: 'page', title: 'Harga', href: '/harga' },
+  { type: 'service', title: 'Penulisan Skripsi', href: '/harga?category=skripsi' },
+  { type: 'service', title: 'Publikasi Jurnal', href: '/harga?category=jurnal' },
+  { type: 'service', title: 'Penulisan Artikel', href: '/harga?category=artikel' },
+  { type: 'service', title: 'Workshop Akademik', href: '/harga?category=workshop' },
+  { type: 'service', title: 'Konsultasi Penelitian', href: '/harga?category=konsultasi' },
+  { type: 'service', title: 'Mentoring Personal', href: '/harga?category=mentoring' },
+  { type: 'article', title: 'Tips Menulis Abstrak', href: '/artikel/tips-menulis-abstrak' },
+  { type: 'article', title: 'Cara Memilih Jurnal', href: '/artikel/cara-memilih-jurnal' },
+]

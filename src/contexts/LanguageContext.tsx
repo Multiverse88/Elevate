@@ -21,6 +21,7 @@ const translations = {
     'nav.articles': 'ARTIKEL',
     'nav.contact': 'KONTAK',
     'nav.consultation': 'Konsultasi Gratis',
+    'nav.searchPlaceholder': 'Cari...',
     
     // Hero Section
     'hero.badge': 'Platform Akademik Terdepan',
@@ -120,6 +121,7 @@ const translations = {
     'nav.articles': 'ARTICLES',
     'nav.contact': 'CONTACT',
     'nav.consultation': 'Free Consultation',
+    'nav.searchPlaceholder': 'Search...',
     
     // Hero Section
     'hero.badge': 'Leading Academic Platform',
