@@ -22,10 +22,8 @@ export default function Navbar() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
   const navRef = useRef<HTMLElement>(null)
-  const [isSearchVisible, setIsSearchVisible] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
-  const searchContainerRef = useRef<HTMLDivElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const searchResultsRef = useRef<HTMLDivElement>(null)
@@ -36,11 +34,10 @@ export default function Navbar() {
     function handleClickOutside(event: MouseEvent) {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         closeMenu()
-        hideSearch()
       }
     }
 
-    if (isMenuOpen || isSearchVisible) {
+    if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     } else {
       document.removeEventListener('mousedown', handleClickOutside)
@@ -49,7 +46,7 @@ export default function Navbar() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isMenuOpen, isSearchVisible])
+  }, [isMenuOpen])
 
   // Start animation when menu opens and prevent body scroll
   useEffect(() => {
@@ -117,55 +114,9 @@ export default function Navbar() {
     setTimeout(() => setIsMenuOpen(false), 300) // Wait for animation to complete
   }
 
-  const showSearch = () => {
-    setIsSearchVisible(true)
-    gsap.to(searchContainerRef.current, {
-      width: 'auto',
-      opacity: 1,
-      paddingLeft: '0.5rem',
-      paddingRight: '0.5rem',
-      duration: 0.3,
-      ease: 'power2.out',
-      onComplete: () => {
-        if (searchInputRef.current) {
-          searchInputRef.current.focus()
-        }
-      },
-    })
-  }
-
-  const hideSearch = () => {
-    gsap.to(searchContainerRef.current, {
-      width: 0,
-      opacity: 0,
-      paddingLeft: 0,
-      paddingRight: 0,
-      duration: 0.3,
-      ease: 'power2.in',
-      onComplete: () => {
-        setIsSearchVisible(false)
-        setSearchQuery('')
-        setSearchResults([])
-      },
-    })
-  }
-
-  const toggleSearch = () => {
-    if (isSearchVisible) {
-      hideSearch()
-    } else {
-      showSearch()
-    }
-  }
-
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value
     setSearchQuery(query)
-
-    // Ensure search bar is visible when typing
-    if (!isSearchVisible && query) {
-      showSearch()
-    }
 
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current)
@@ -185,7 +136,8 @@ export default function Navbar() {
 
   const handleSuggestionClick = (href: string) => {
     router.push(href)
-    hideSearch()
+    setSearchQuery('') // Clear search query
+    setSearchResults([]) // Clear search results
     closeMenu()
   }
 
@@ -271,45 +223,31 @@ export default function Navbar() {
                 </span>
               </button>
 
-              {/* Search Icon and Bar */}
-              <div className="hidden lg:flex items-center relative">
-                <div
-                  ref={searchContainerRef}
-                  className="relative w-0 opacity-0 transition-all duration-300 flex items-center"
-                >
-                  <input
-                    ref={searchInputRef}
-                    type="text"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    placeholder={t('nav.searchPlaceholder') || 'Search...'}
-                    className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+              {/* Search Bar */}
+            <div className="relative flex-grow flex items-center mx-2 sm:mx-4 md:mx-6 lg:mx-8">
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder={t('nav.searchPlaceholder') || 'Search...'}
+                className="w-full px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              />
+              <div ref={searchResultsRef} className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto z-50" style={{ opacity: 0, height: 0, overflow: 'hidden' }}>
+                  {searchResults.map((result, index) => (
+                    <Link
+                      key={index}
+                      href={result.href}
+                      className="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-gray-800 group"
+                      onClick={() => handleSuggestionClick(result.href)}
+                    >
+                      <span className="mr-2 text-base group-hover:animate-bounce">{getIconForType(result.type)}</span>
+                      <span className="flex-1">{result.title}</span>
+                      <span className="text-xs text-gray-500 ml-2">({result.type})</span>
+                    </Link>
+                  ))}
                 </div>
-                <button
-                  onClick={toggleSearch}
-                  className="p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200"
-                  aria-label="Toggle search bar"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </button>
-                <div ref={searchResultsRef} className="absolute top-full right-0 mt-1 w-64 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto z-50" style={{ opacity: 0, height: 0, overflow: 'hidden' }}>
-                    {searchResults.map((result, index) => (
-                      <Link
-                        key={index}
-                        href={result.href}
-                        className="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-gray-800 group"
-                        onClick={() => handleSuggestionClick(result.href)}
-                      >
-                        <span className="mr-2 text-base group-hover:animate-bounce">{getIconForType(result.type)}</span>
-                        <span className="flex-1">{result.title}</span>
-                        <span className="text-xs text-gray-500 ml-2">({result.type})</span>
-                      </Link>
-                    ))}
-                  </div>
-              </div>
+            </div>
 
 
               {/* Consultation Button - Responsive sizing */}
@@ -406,30 +344,7 @@ export default function Navbar() {
 
                     {/* Additional Actions */}
                     <div className="space-y-1">
-                      {/* Search */}
-                      <div className="relative w-full">
-                        <input
-                          type="text"
-                          value={searchQuery}
-                          onChange={handleSearchChange}
-                          placeholder={t('nav.searchPlaceholder') || 'Search...'}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                        <div ref={searchResultsRef} className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto z-50" style={{ opacity: 0, height: 0, overflow: 'hidden' }}>
-                          {searchResults.map((result, index) => (
-                            <Link
-                              key={index}
-                              href={result.href}
-                              className="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-gray-800 group"
-                              onClick={() => handleSuggestionClick(result.href)}
-                            >
-                              <span className="mr-2 text-base group-hover:animate-bounce">{getIconForType(result.type)}</span>
-                              <span className="flex-1">{result.title}</span>
-                              <span className="text-xs text-gray-500 ml-2">({result.type})</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
+                      
                       
                       {/* Profile */}
                       <button className="flex items-center w-full px-4 py-3 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group">
