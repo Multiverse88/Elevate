@@ -161,27 +161,6 @@ export default function AboutUsSection() {
           </p>
         </div>
 
-        {/* Statistics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, idx) => (
-            <div 
-              key={idx}
-              ref={el => { statsRef.current[idx] = el }}
-              className="bg-white p-6 rounded-2xl shadow-lg text-center group cursor-pointer hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="text-4xl mb-3 group-hover:animate-bounce">
-                {stat.icon}
-              </div>
-              <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-600 font-medium">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
         {/* Mission Statement */}
         <div className="mt-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white p-8 lg:p-12 rounded-3xl relative overflow-hidden shadow-2xl">
           {/* Background pattern */}

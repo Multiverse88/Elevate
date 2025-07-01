@@ -33,7 +33,7 @@ const translations = {
     'hero.stats.publications': 'Publikasi Berhasil',
     
     // Services Section
-    'services.title': 'Jelajahi Layanan Kami',
+    'services.title': 'Jelajahi Jenis Layanan Kami',
     'services.writing': 'Bimbingan Penulisan Naskah',
     'services.writing.desc': 'Skripsi, artikel jurnal, esai, disertasi, dll.',
     'services.publication': 'Pendampingan Publikasi Ilmiah',
@@ -56,7 +56,7 @@ const translations = {
     // About Section
     'about.badge': 'Tentang Kami',
     'about.title': 'Tentang Elevate Academia',
-    'about.subtitle': 'Elevate Academia adalah platform terdepan yang berkomitmen membantu akademisi, mahasiswa, dan peneliti dalam mencapai kesuksesan akademik. Dengan tim mentor berpengalaman dan metodologi terbukti, kami telah membantu ribuan individu meraih prestasi terbaik mereka.',
+    'about.subtitle': 'Elevate Academia adalah platform yang mendukung akademisi, mahasiswa, dan peneliti untuk mencapai kesuksesan akademik. Dengan mentor berpengalaman dan metodologi yang terbukti, kami siap membantu Anda meraih prestasi terbaik..',
     'about.stats.clients': 'Klien Puas',
     'about.stats.mentors': 'Mentor Ahli',
     'about.stats.publications': 'Publikasi',
@@ -65,8 +65,8 @@ const translations = {
     'about.mission.text': 'Memberdayakan setiap individu untuk mencapai potensi akademik tertinggi mereka melalui bimbingan berkualitas, mentoring personal, dan dukungan berkelanjutan dalam perjalanan pendidikan mereka.',
     
     // Coaching Section
-    'coaching.badge': 'Tentang Kami',
-    'coaching.title': 'Kami Menyediakan Bimbingan oleh Mentor Ahli',
+    'coaching.badge': 'Mentori Kami',
+    'coaching.title': 'Kami Menyediakan Mentoring Personal oleh Mentor Ahli',
     'coaching.subtitle': 'Elevate Academia menghadirkan tim mentor berpengalaman yang siap membantu Anda mencapai kesuksesan akademik. Dengan metodologi yang terbukti efektif dan pendekatan personal, kami memastikan setiap klien mendapatkan bimbingan terbaik sesuai kebutuhan mereka.',
     'coaching.feature1.title': 'Mentor Berpengalaman',
     'coaching.feature1.desc': 'Tim mentor kami adalah ahli di bidang masing-masing dengan pengalaman akademik yang luas.',
@@ -156,7 +156,7 @@ const translations = {
     // About Section
     'about.badge': 'About Us',
     'about.title': 'About Elevate Academia',
-    'about.subtitle': 'Elevate Academia is a leading platform committed to helping academics, students, and researchers achieve academic success. With experienced mentors and proven methodologies, we have helped thousands of individuals achieve their best performance.',
+    'about.subtitle': 'Elevate Academia is a platform that supports academics, students, and researchers in achieving academic success. With experienced mentors and proven methodologies, we are here to help you reach your best potential..',
     'about.stats.clients': 'Happy Clients',
     'about.stats.mentors': 'Expert Mentors',
     'about.stats.publications': 'Publications',
@@ -165,8 +165,8 @@ const translations = {
     'about.mission.text': 'Empowering every individual to reach their highest academic potential through quality guidance, personal mentoring, and ongoing support in their educational journey.',
     
     // Coaching Section
-    'coaching.badge': 'About Us',
-    'coaching.title': 'We Provide Coaching by Expert Mentors',
+    'coaching.badge': 'Our Mentors',
+    'coaching.title': 'We Provide Mentoring by Expert Mentors',
     'coaching.subtitle': 'Elevate Academia presents a team of experienced mentors ready to help you achieve academic success. With proven effective methodologies and personal approaches, we ensure every client gets the best guidance according to their needs.',
     'coaching.feature1.title': 'Experienced Mentors',
     'coaching.feature1.desc': 'Our mentor team consists of experts in their respective fields with extensive academic experience.',

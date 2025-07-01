@@ -47,10 +47,12 @@ export default function CoachingSection() {
               <div className="absolute inset-8 bg-gradient-to-br from-gray-100 to-white rounded-full opacity-80"></div>
               
               {/* Coach image */}
-              <div className="relative z-20 flex justify-center items-center h-96">
+              <div className="relative z-20 flex justify-center items-center">
                 <div className="text-center">
-                  <div className="w-64 h-64 bg-gradient-to-br from-white to-gray-100 rounded-full flex items-center justify-center shadow-2xl">
-                    <div className="text-6xl">👨‍💼</div>
+                  <div className="bg-gradient-to-br from-white to-gray-100 rounded-full flex items-center justify-center shadow-2xl p-4">
+                    <div>
+                      <Image src="/images/mentor3d.png" alt="Coach" width={500} height={500} className="w-full h-full object-contain" />
+                    </div>
                   </div>
                 </div>
               </div>

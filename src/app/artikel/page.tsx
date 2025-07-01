@@ -21,6 +21,7 @@ export default function Artikel() {
                 alt="Article thumbnail"
                 fill
                 className="object-cover"
+                sizes="100vw"
               />
             </div>
             <div className="p-6">

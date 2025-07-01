@@ -89,32 +89,7 @@ export default function Footer() {
               <li>Jakarta, Indonesia</li>
             </ul>
           </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="text-lg font-semibold mb-2">
-                {t('footer.newsletter')}
-              </h3>
-              <p className="text-gray-300">
-                {t('footer.newsletter.desc')}
-              </p>
-            </div>
-            
-            <div className="flex w-full md:w-auto">
-              <input
-                type="email"
-                placeholder={t('footer.newsletter.placeholder')}
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400"
-              />
-              <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-r transition-colors duration-200">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
+        </div>?
 
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-gray-700">
