@@ -19,22 +19,26 @@ function PriceListContent() {
         { name: 'Professional', price: 'Rp 7,000,000', duration: '12 bulan', features: ['Dukungan penuh', 'Mentor personal', 'Unlimited revision'] }
       ]
     },
-    jurnal: {
+    'publikasi-jurnal': {
       title: 'Publikasi Jurnal',
       icon: '📄',
       packages: [
-        { name: 'Basic', price: 'Rp 1,500,000', duration: '4 minggu', features: ['Review manuskrip', 'Basic editing', 'Format guidance'] },
-        { name: 'Premium', price: 'Rp 3,000,000', duration: '8 minggu', features: ['Full editing', 'Journal targeting', 'Submission support'], popular: true },
-        { name: 'Professional', price: 'Rp 5,000,000', duration: '6 bulan', features: ['End-to-end support', 'Multiple submissions', 'Expert reviewer'] }
+        { name: 'ISSN (Nasional Standar)', price: 'Rp 999.000', originalPrice: 'Rp 1.500.000', duration: 'Variatif', features: ['Garansi Jaminan 100% Terbit', 'Termasuk PJIR dan APC jurnal', 'Pembayaran 2x (DP 50%, sisa saat LoA terbit)', 'Editing Penyesuaian Template Jurnal', 'Review', 'Mendeley', 'Cek Turnitin', 'Proofreading', 'Translate', 'Revisi minor', 'Letter of Acceptance (LoA)', 'Sertifikat Author Index Nasional/International', 'Corespondent lengkap', 'Fast Respon, Ramah, and Friendly', 'Akun Ojs', 'Free Username dan Password', 'DOI Aktif', 'Publish/Terbit Jurnal Sesuai Issue', 'Full Issue'] },
+        { name: 'Sinta 6 (Nasional Akreditasi)', price: 'Rp 1.699.000', originalPrice: 'Rp 3.000.000', duration: 'Variatif', features: ['Garansi Jaminan 100% Terbit', 'Termasuk PJIR dan APC jurnal', 'Pembayaran 2x (DP 50%, sisa saat LoA terbit)', 'Editing Penyesuaian Template Jurnal', 'Review', 'Mendeley', 'Cek Turnitin', 'Proofreading', 'Translate', 'Revisi minor', 'Letter of Acceptance (LoA)', 'Sertifikat Author Index Nasional/International', 'Corespondent lengkap', 'Fast Respon, Ramah, and Friendly', 'Akun Ojs', 'Free Username dan Password', 'DOI Aktif', 'Publish/Terbit Jurnal Sesuai Issue', 'Full Issue'] },
+        { name: 'Sinta 5 (Nasional Akreditasi)', price: 'Rp 2.099.000', originalPrice: 'Rp 4.000.000', duration: 'Variatif', features: ['Garansi Jaminan 100% Terbit', 'Termasuk PJIR dan APC jurnal', 'Pembayaran 2x (DP 50%, sisa saat LoA terbit)', 'Editing Penyesuaian Template Jurnal', 'Review', 'Mendeley', 'Cek Turnitin', 'Proofreading', 'Translate', 'Revisi minor', 'Letter of Acceptance (LoA)', 'Sertifikat Author Index Nasional/International', 'Corespondent lengkap', 'Fast Respon, Ramah, and Friendly', 'Akun Ojs', 'Free Username dan Password', 'DOI Aktif', 'Publish/Terbit Jurnal Sesuai Issue', 'Full Issue'] },
+        { name: 'Sinta 4 (Nasional Akreditasi)', price: 'Rp 2.999.000', originalPrice: 'Rp 5.000.000', duration: 'Variatif', features: ['Garansi Jaminan 100% Terbit', 'Termasuk PJIR dan APC jurnal', 'Pembayaran 2x (DP 50%, sisa saat LoA terbit)', 'Editing Penyesuaian Template Jurnal', 'Review', 'Mendeley', 'Cek Turnitin', 'Proofreading', 'Translate', 'Revisi minor', 'Letter of Acceptance (LoA)', 'Sertifikat Author Index Nasional/International', 'Corespondent lengkap', 'Fast Respon, Ramah, and Friendly', 'Akun Ojs', 'Free Username dan Password', 'DOI Aktif', 'Publish/Terbit Jurnal Sesuai Issue', 'Full Issue'] },
+        { name: 'Sinta 3 (Nasional Akreditasi)', price: 'Rp 4.999.000', originalPrice: 'Rp 8.000.000', duration: 'Variatif', features: ['Garansi Jaminan 100% Terbit', 'Termasuk PJIR dan APC jurnal', 'Pembayaran 2x (DP 50%, sisa saat LoA terbit)', 'Editing Penyesuaian Template Jurnal', 'Review', 'Mendeley', 'Cek Turnitin', 'Proofreading', 'Translate', 'Revisi minor', 'Letter of Acceptance (LoA)', 'Sertifikat Author Index Nasional/International', 'Corespondent lengkap', 'Fast Respon, Ramah, and Friendly', 'Akun Ojs', 'Free Username dan Password', 'DOI Aktif', 'Publish/Terbit Jurnal Sesuai Issue', 'Full Issue'], popular: true },
       ]
     },
-    artikel: {
-      title: 'Penulisan Artikel',
+    'penulisan-artikel-sinta': {
+      title: 'Penulisan Artikel Jurnal Nasional Terakreditasi SINTA',
       icon: '✍️',
       packages: [
-        { name: 'Basic', price: 'Rp 800,000', duration: '2 minggu', features: ['Konsultasi topik', 'Structure guidance', 'Basic review'] },
-        { name: 'Premium', price: 'Rp 1,500,000', duration: '4 minggu', features: ['Complete writing', 'Research assistance', 'Quality editing'], popular: true },
-        { name: 'Professional', price: 'Rp 2,500,000', duration: '6 minggu', features: ['Expert writing', 'Original research', 'Publication ready'] }
+        { name: 'SINTA 2', price: 'Rp 7.499.500', originalPrice: 'Rp 14.999.000', duration: 'Variatif', features: ['Artikel ditulis dari awal', 'Proofreading', 'Proses submit'] },
+        { name: 'SINTA 3', price: 'Rp 2.499.500', originalPrice: 'Rp 4.999.000', duration: 'Variatif', features: ['Artikel ditulis dari awal', 'Proofreading', 'Proses submit'] },
+        { name: 'SINTA 4', price: 'Rp 1.499.500', originalPrice: 'Rp 2.999.000', duration: 'Variatif', features: ['Artikel ditulis dari awal', 'Proofreading', 'Proses submit'] },
+        { name: 'SINTA 5', price: 'Rp 999.500', originalPrice: 'Rp 1.999.000', duration: 'Variatif', features: ['Artikel ditulis dari awal', 'Proofreading', 'Proses submit'] },
+        { name: 'SINTA 6', price: 'Rp 749.500', originalPrice: 'Rp 1.499.000', duration: 'Variatif', features: ['Artikel ditulis dari awal', 'Proofreading', 'Proses submit'] },
       ]
     },
     workshop: {
@@ -111,6 +115,10 @@ function PriceListContent() {
 
         {filteredCategories.map((cat) => {
           const categoryData = priceData[cat as keyof typeof priceData]
+
+          if (!categoryData) {
+            return null; // Or render a message indicating category not found
+          }
           
           return (
             <div key={cat} className={`mb-12 sm:mb-16 ${!category ? 'border-b border-gray-200 pb-12 sm:pb-16' : ''}`}>
@@ -142,17 +150,26 @@ function PriceListContent() {
                     <div className="p-4 sm:p-6 lg:p-8">
                       <div className="text-center mb-6 sm:mb-8">
                         <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                        <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 break-words">{pkg.price}</div>
+                        <div className="flex items-baseline justify-center mb-2">
+                          {pkg.originalPrice && (
+                            <span className="text-sm sm:text-base text-gray-500 line-through mr-2">
+                              {pkg.originalPrice}
+                            </span>
+                          )}
+                          <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 break-words">
+                            {pkg.price}
+                          </span>
+                        </div>
                         <div className="text-sm sm:text-base text-gray-600">{pkg.duration}</div>
                       </div>
                       
                       <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                         {pkg.features.map((feature, featureIdx) => (
                           <li key={featureIdx} className="flex items-start">
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
-                            <span className="text-sm sm:text-base text-gray-700">{feature}</span>
+                            <span className="text-base sm:text-lg text-gray-700">{feature}</span>
                           </li>
                         ))}
                       </ul>

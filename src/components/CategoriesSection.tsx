@@ -16,16 +16,16 @@ export default function CategoriesSection() {
       textColor: 'text-blue-700'
     },
     { 
-      id: 'jurnal',
-      title: t('categories.jurnal'), 
+      id: 'publikasi-jurnal',
+      title: t('categories.publikasiJurnal'), 
       icon: '📄',
       bgColor: 'bg-gradient-to-br from-green-50 to-blue-50',
       iconBg: 'bg-gradient-to-br from-green-100 to-blue-100',
       textColor: 'text-green-700'
     },
     { 
-      id: 'artikel',
-      title: t('categories.artikel'), 
+      id: 'penulisan-artikel-sinta',
+      title: t('categories.penulisanArtikelSinta'), 
       icon: '✍️',
       bgColor: 'bg-gradient-to-br from-purple-50 to-pink-50',
       iconBg: 'bg-gradient-to-br from-purple-100 to-pink-100',
