@@ -51,7 +51,7 @@ const translations = {
     'categories.penulisanArtikelSinta': 'Penulisan Artikel',
     'categories.workshop': 'Workshop Akademik',
     'categories.konsultasi': 'Konsultasi Penelitian',
-    'categories.mentoring': 'Mentoring Personal',
+    'categories.mentoring': 'Personal Mentoring',
     
     // About Section
     'about.badge': 'Tentang Kami',
@@ -112,6 +112,106 @@ const translations = {
     'trusted.badge': 'Dipercaya Oleh',
     'trusted.subtitle': 'Dipercaya oleh ribuan mahasiswa dan institusi pendidikan terkemuka di Indonesia',
     'trusted.all': 'Semua Layanan',
+
+    // Price Page
+    'price.badge': 'Daftar Harga',
+    'price.title': 'Daftar Harga Layanan',
+    'price.subtitle': 'Pilih paket yang sesuai dengan kebutuhan akademik Anda',
+    'price.allServices': 'Semua Layanan',
+    'price.consultationTitle': 'Butuh Konsultasi Khusus?',
+    'price.consultationSubtitle': 'Tim ahli kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan akademik Anda',
+    'price.contactButton': 'Hubungi Kami →',
+    'price.popular': 'Populer',
+    'price.choosePackage': 'Pilih Paket',
+
+    // Price Page - Skripsi
+    'price.skripsi.title': 'Penulisan Skripsi',
+    'price.skripsi.basic.duration': '3 bulan',
+    'price.skripsi.basic.features.0': 'Konsultasi dasar',
+    'price.skripsi.basic.features.1': 'Review outline',
+    'price.skripsi.basic.features.2': 'Email support',
+    'price.skripsi.premium.duration': '6 bulan',
+    'price.skripsi.premium.features.0': 'Bimbingan lengkap',
+    'price.skripsi.premium.features.1': 'Meeting mingguan',
+    'price.skripsi.premium.features.2': 'Priority support',
+    'price.skripsi.professional.duration': '12 bulan',
+    'price.skripsi.professional.features.0': 'Dukungan penuh',
+    'price.skripsi.professional.features.1': 'Mentor personal',
+    'price.skripsi.professional.features.2': 'Unlimited revision',
+
+    // Price Page - Publikasi Jurnal
+    'price.publikasiJurnal.title': 'Publikasi Jurnal',
+    'price.publikasiJurnal.variatif': 'Variatif',
+    'price.publikasiJurnal.features.0': 'Garansi Jaminan 100% Terbit',
+    'price.publikasiJurnal.features.1': 'Termasuk PJIR dan APC jurnal',
+    'price.publikasiJurnal.features.2': 'Pembayaran 2x (DP 50%, sisa saat LoA terbit)',
+    'price.publikasiJurnal.features.3': 'Editing Penyesuaian Template Jurnal',
+    'price.publikasiJurnal.features.4': 'Review',
+    'price.publikasiJurnal.features.5': 'Mendeley',
+    'price.publikasiJurnal.features.6': 'Cek Turnitin',
+    'price.publikasiJurnal.features.7': 'Proofreading',
+    'price.publikasiJurnal.features.8': 'Translate',
+    'price.publikasiJurnal.features.9': 'Revisi minor',
+    'price.publikasiJurnal.features.10': 'Letter of Acceptance (LoA)',
+    'price.publikasiJurnal.features.11': 'Sertifikat Author Index Nasional/International',
+    'price.publikasiJurnal.features.12': 'Corespondent lengkap',
+    'price.publikasiJurnal.features.13': 'Fast Respon, Ramah, and Friendly',
+    'price.publikasiJurnal.features.14': 'Akun Ojs',
+    'price.publikasiJurnal.features.15': 'Free Username dan Password',
+    'price.publikasiJurnal.features.16': 'DOI Aktif',
+    'price.publikasiJurnal.features.17': 'Publish/Terbit Jurnal Sesuai Issue',
+    'price.publikasiJurnal.features.18': 'Full Issue',
+
+    // Price Page - Penulisan Artikel SINTA
+    'price.penulisanArtikelSinta.title': 'Penulisan Artikel Jurnal Nasional Terakreditasi SINTA',
+    'price.penulisanArtikelSinta.features.0': 'Artikel ditulis dari awal',
+    'price.penulisanArtikelSinta.features.1': 'Proofreading',
+    'price.penulisanArtikelSinta.features.2': 'Proses submit',
+
+    // Price Page - Workshop Akademik
+    'price.workshop.title': 'Workshop Akademik',
+    'price.workshop.basic.duration': '4 jam',
+    'price.workshop.basic.features.0': 'Basic workshop',
+    'price.workshop.basic.features.1': 'Materials',
+    'price.workshop.basic.features.2': 'Certificate',
+    'price.workshop.premium.duration': '2 hari',
+    'price.workshop.premium.features.0': 'Intensive workshop',
+    'price.workshop.premium.features.1': 'Practical exercises',
+    'price.workshop.premium.features.2': 'Personal feedback',
+    'price.workshop.professional.duration': '1 minggu',
+    'price.workshop.professional.features.0': 'Custom workshop',
+    'price.workshop.professional.features.1': 'Expert trainers',
+    'price.workshop.professional.features.2': 'Advanced materials',
+
+    // Price Page - Konsultasi Penelitian
+    'price.konsultasi.title': 'Konsultasi Penelitian',
+    'price.konsultasi.basic.duration': '1 jam',
+    'price.konsultasi.basic.features.0': 'One hour consult',
+    'price.konsultasi.basic.features.1': 'Problem analysis',
+    'price.konsultasi.basic.features.2': 'Basic guidance',
+    'price.konsultasi.premium.duration': '4 minggu',
+    'price.konsultasi.premium.features.0': 'Multi session',
+    'price.konsultasi.premium.features.1': 'Detailed analysis',
+    'price.konsultasi.premium.features.2': 'Custom solution',
+    'price.konsultasi.professional.duration': '3 bulan',
+    'price.konsultasi.professional.features.0': 'Dedicated consultant',
+    'price.konsultasi.professional.features.1': 'Comprehensive analysis',
+    'price.konsultasi.professional.features.2': 'Implementation support',
+
+    // Price Page - Mentoring Personal
+    'price.mentoring.title': 'Mentoring Personal',
+    'price.mentoring.basic.duration': '2 bulan',
+    'price.mentoring.basic.features.0': 'Biweekly meeting',
+    'price.mentoring.basic.features.1': 'Goal setting',
+    'price.mentoring.basic.features.2': 'Progress review',
+    'price.mentoring.premium.duration': '6 bulan',
+    'price.mentoring.premium.features.0': 'Weekly meeting',
+    'price.mentoring.premium.features.1': 'Personalized plan',
+    'price.mentoring.premium.features.2': 'Skill development',
+    'price.mentoring.professional.duration': '12 bulan',
+    'price.mentoring.professional.features.0': 'Dedicated mentor',
+    'price.mentoring.professional.features.1': 'Comprehensive development',
+    'price.mentoring.professional.features.2': 'Industry insights',
   },
   en: {
     // Navbar
@@ -212,15 +312,131 @@ const translations = {
     'trusted.badge': 'Trusted By',
     'trusted.subtitle': 'Trusted by thousands of students and leading educational institutions in Indonesia',
     'trusted.all': 'All Services',
-  }
-}
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('id')
+    // Price Page
+    'price.badge': 'Price List',
+    'price.title': 'Service Price List',
+    'price.subtitle': 'Choose the package that suits your academic needs',
+    'price.allServices': 'All Services',
+    'price.consultationTitle': 'Need Special Consultation?',
+    'price.consultationSubtitle': 'Our expert team is ready to help you find the best solution for your academic needs',
+    'price.contactButton': 'Contact Us →',
+    'price.popular': 'Popular',
+    'price.choosePackage': 'Choose Package',
 
-  const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations[typeof language]] || key
+    // Price Page - Skripsi
+    'price.skripsi.title': 'Thesis Writing',
+    'price.skripsi.basic.duration': '3 months',
+    'price.skripsi.basic.features.0': 'Basic consultation',
+    'price.skripsi.basic.features.1': 'Outline review',
+    'price.skripsi.basic.features.2': 'Email support',
+    'price.skripsi.premium.duration': '6 months',
+    'price.skripsi.premium.features.0': 'Full guidance',
+    'price.skripsi.premium.features.1': 'Weekly meetings',
+    'price.skripsi.premium.features.2': 'Priority support',
+    'price.skripsi.professional.duration': '12 months',
+    'price.skripsi.professional.features.0': 'Full support',
+    'price.skripsi.professional.features.1': 'Personal mentor',
+    'price.skripsi.professional.features.2': 'Unlimited revisions',
+
+    // Price Page - Publikasi Jurnal
+    'price.publikasiJurnal.title': 'Journal Publication',
+    'price.publikasiJurnal.variatif': 'Variative',
+    'price.publikasiJurnal.features.0': '100% Publication Guarantee',
+    'price.publikasiJurnal.features.1': 'Includes PJIR and journal APC',
+    'price.publikasiJurnal.features.2': '2x Payment (50% DP, rest upon LoA issuance)',
+    'price.publikasiJurnal.features.3': 'Journal Template Adjustment Editing',
+    'price.publikasiJurnal.features.4': 'Review',
+    'price.publikasiJurnal.features.5': 'Mendeley',
+    'price.publikasiJurnal.features.6': 'Turnitin Check',
+    'price.publikasiJurnal.features.7': 'Proofreading',
+    'price.publikasiJurnal.features.8': 'Translation',
+    'price.publikasiJurnal.features.9': 'Minor Revisions',
+    'price.publikasiJurnal.features.10': 'Letter of Acceptance (LoA)',
+    'price.publikasiJurnal.features.11': 'National/International Author Index Certificate',
+    'price.publikasiJurnal.features.12': 'Full Correspondent',
+    'price.publikasiJurnal.features.13': 'Fast Response, Kind, and Friendly',
+    'price.publikasiJurnal.features.14': 'OJS Account',
+    'price.publikasiJurnal.features.15': 'Free Username and Password',
+    'price.publikasiJurnal.features.16': 'Active DOI',
+    'price.publikasiJurnal.features.17': 'Journal Publication According to Issue',
+    'price.publikasiJurnal.features.18': 'Full Issue',
+
+    // Price Page - Penulisan Artikel SINTA
+    'price.penulisanArtikelSinta.title': 'SINTA Accredited National Journal Article Writing',
+    'price.penulisanArtikelSinta.features.0': 'Article written from scratch',
+    'price.penulisanArtikelSinta.features.1': 'Proofreading',
+    'price.penulisanArtikelSinta.features.2': 'Submission process',
+
+    // Price Page - Workshop Akademik
+    'price.workshop.title': 'Academic Workshop',
+    'price.workshop.basic.duration': '4 hours',
+    'price.workshop.basic.features.0': 'Basic workshop',
+    'price.workshop.basic.features.1': 'Materials',
+    'price.workshop.basic.features.2': 'Certificate',
+    'price.workshop.premium.duration': '2 days',
+    'price.workshop.premium.features.0': 'Intensive workshop',
+    'price.workshop.premium.features.1': 'Practical exercises',
+    'price.workshop.premium.features.2': 'Personal feedback',
+    'price.workshop.professional.duration': '1 week',
+    'price.workshop.professional.features.0': 'Custom workshop',
+    'price.workshop.professional.features.1': 'Expert trainers',
+    'price.workshop.professional.features.2': 'Advanced materials',
+
+    // Price Page - Konsultasi Penelitian
+    'price.konsultasi.title': 'Research Consultation',
+    'price.konsultasi.basic.duration': '1 hour',
+    'price.konsultasi.basic.features.0': 'One hour consult',
+    'price.konsultasi.basic.features.1': 'Problem analysis',
+    'price.konsultasi.basic.features.2': 'Basic guidance',
+    'price.konsultasi.premium.duration': '4 weeks',
+    'price.konsultasi.premium.features.0': 'Multi session',
+    'price.konsultasi.premium.features.1': 'Detailed analysis',
+    'price.konsultasi.premium.features.2': 'Custom solution',
+    'price.konsultasi.professional.duration': '3 months',
+    'price.konsultasi.professional.features.0': 'Dedicated consultant',
+    'price.konsultasi.professional.features.1': 'Comprehensive analysis',
+    'price.konsultasi.professional.features.2': 'Implementation support',
+
+    // Price Page - Mentoring Personal
+    'price.mentoring.title': 'Personal Mentoring',
+    'price.mentoring.basic.duration': '2 months',
+    'price.mentoring.basic.features.0': 'Biweekly meeting',
+    'price.mentoring.basic.features.1': 'Goal setting',
+    'price.mentoring.basic.features.2': 'Progress review',
+    'price.mentoring.premium.duration': '6 months',
+    'price.mentoring.premium.features.0': 'Weekly meeting',
+    'price.mentoring.premium.features.1': 'Personalized plan',
+    'price.mentoring.premium.features.2': 'Skill development',
+    'price.mentoring.professional.duration': '12 months',
+    'price.mentoring.professional.features.0': 'Dedicated mentor',
+    'price.mentoring.professional.features.1': 'Comprehensive development',
+    'price.mentoring.professional.features.2': 'Industry insights',
   }
+};
+
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const [language, setLanguage] = useState<Language>('id');
+
+  const t = (key: string) => {
+    const keys = key.split('.');
+    let result: any = translations[language];
+    for (const k of keys) {
+      result = result[k];
+      if (!result) {
+        // Fallback to English if key not found in current language
+        result = translations.en;
+        for (const k_fallback of keys) {
+          result = result[k_fallback];
+          if (!result) {
+            return key; // Return key if not found in English either
+          }
+        }
+        return result;
+      }
+    }
+    return result;
+  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
@@ -229,10 +445,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   )
 }
 
-export function useLanguage() {
+export const useLanguage = () => {
   const context = useContext(LanguageContext)
   if (context === undefined) {
     throw new Error('useLanguage must be used within a LanguageProvider')
   }
   return context
-} 
+}
