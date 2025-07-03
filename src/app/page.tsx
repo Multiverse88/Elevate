@@ -1,21 +1,19 @@
 import HeroSection from '@/components/HeroSection'
-import ServicesSection from '@/components/ServicesSection'
-import AboutUsSection from '@/components/AboutUsSection'
-import CategoriesSection from '@/components/CategoriesSection'
-import CoachingSection from '@/components/CoachingSection'
-import dynamic from 'next/dynamic'
-
-const ContactSection = dynamic(() => import('@/components/ContactSection'), { ssr: false })
+import ClientServicesSection from '@/components/client-wrappers/ClientServicesSection'
+import ClientCategoriesSection from '@/components/client-wrappers/ClientCategoriesSection'
+import ClientAboutUsSection from '@/components/client-wrappers/ClientAboutUsSection'
+import ClientCoachingSection from '@/components/client-wrappers/ClientCoachingSection'
+import ClientContactSection from '@/components/client-wrappers/ClientContactSection'
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <HeroSection />
-      <ServicesSection />
-      <CategoriesSection />
-      <AboutUsSection />
-      <CoachingSection />
-      <ContactSection />
+      <ClientServicesSection />
+      <ClientCategoriesSection />
+      <ClientAboutUsSection />
+      <ClientCoachingSection />
+      <ClientContactSection />
     </div>
   )
-} 
+}

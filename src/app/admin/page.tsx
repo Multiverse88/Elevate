@@ -1,4 +1,4 @@
-import AdminDashboard from '@/components/admin/Dashboard'
+import ClientAdminDashboard from '@/components/admin/ClientAdminDashboard'
 
 export default function AdminPage() {
   return (
@@ -12,8 +12,8 @@ export default function AdminPage() {
             Manage your content and website settings
           </p>
         </div>
-        <AdminDashboard />
+        <ClientAdminDashboard />
       </div>
     </div>
   )
-} 
+}

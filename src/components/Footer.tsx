@@ -89,7 +89,8 @@ export default function Footer() {
               <li>Jakarta, Indonesia</li>
             </ul>
           </div>
-        </div>?
+        </div>
+        
 
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-gray-700">

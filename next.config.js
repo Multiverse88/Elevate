@@ -12,9 +12,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   // Disable API routes for static export
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
+  
 }
 
 module.exports = nextConfig 

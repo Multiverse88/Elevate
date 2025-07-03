@@ -1,7 +1,16 @@
 'use client'
 import { useState } from 'react'
-import ArticleForm from './ArticleForm'
-import ServiceForm from './ServiceForm'
+import dynamic from 'next/dynamic'
+
+const LoadingSpinner = () => (
+    <div className="flex justify-center items-center p-10">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+    </div>
+  );
+
+const ArticleForm = dynamic(() => import('./ArticleForm'), { loading: () => <LoadingSpinner /> })
+const ServiceForm = dynamic(() => import('./ServiceForm'), { loading: () => <LoadingSpinner /> })
+
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('articles')

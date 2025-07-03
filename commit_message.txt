@@ -1,0 +1,5 @@
+fix(lang): resolve errors and remove duplication in LanguageContext
+
+- Remove duplicated English translations
+- Fix syntax errors
+- Add out/ directory to .gitignore

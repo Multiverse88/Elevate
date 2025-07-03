@@ -419,23 +419,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('id');
 
   const t = (key: string) => {
-    const keys = key.split('.');
-    let result: any = translations[language];
-    for (const k of keys) {
-      result = result[k];
-      if (!result) {
-        // Fallback to English if key not found in current language
-        result = translations.en;
-        for (const k_fallback of keys) {
-          result = result[k_fallback];
-          if (!result) {
-            return key; // Return key if not found in English either
-          }
-        }
-        return result;
-      }
+    if (translations[language] && key in translations[language]) {
+      return translations[language][key];
+    } else if (translations.en && key in translations.en) {
+      return translations.en[key];
+    } else {
+      return key;
     }
-    return result;
   };
 
   return (
