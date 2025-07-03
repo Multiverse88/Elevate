@@ -95,7 +95,7 @@ export default function Navbar() {
   const navigation = [
     { name: t('nav.home'), href: '/' },
     { name: t('nav.profile'), href: '/profile' },
-    { name: t('nav.services'), href: '/layanan' },
+    { name: t('nav.services'), href: '/harga' },
     { name: t('nav.articles'), href: '/artikel' },
     { name: t('nav.contact'), href: '/kontak' },
   ]
