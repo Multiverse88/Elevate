@@ -3,7 +3,10 @@ import { useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import LoadingOverlay from '@/components/LoadingOverlay'
+import NavigationLoader from '@/components/NavigationLoader'
+import PageTransitionWrapper from '@/components/PageTransitionWrapper'
 import { useLoading } from '@/contexts/LoadingContext'
+import { NavigationProvider } from '@/contexts/NavigationContext'
 
 export default function RootLayoutContent({ children }: { children: React.ReactNode }) {
   const { loading, setLoading } = useLoading()
@@ -18,15 +21,18 @@ export default function RootLayoutContent({ children }: { children: React.ReactN
   }, [setLoading])
 
   return (
-    <>
+    <NavigationProvider>
       {loading && <LoadingOverlay />}
+      <NavigationLoader />
       <div style={{ display: loading ? 'none' : 'block' }}>
         <Navbar />
-        <main>
-          {children}
-        </main>
+        <PageTransitionWrapper>
+          <main>
+            {children}
+          </main>
+        </PageTransitionWrapper>
         <Footer />
       </div>
-    </>
+    </NavigationProvider>
   )
 }

@@ -91,10 +91,6 @@ export default function CoachingSection() {
                 </div>
               ))}
             </div>
-            
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105">
-              {t('coaching.learn')} →
-            </button>
           </div>
         </div>
       </div>

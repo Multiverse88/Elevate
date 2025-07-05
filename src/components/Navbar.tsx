@@ -7,6 +7,8 @@ import { gsap } from 'gsap'
 import { useRouter } from 'next/navigation'
 import { searchableItems } from '@/lib/searchData'
 import dynamic from 'next/dynamic'
+import AnimatedLink from './AnimatedLink'
+import AnimatedLanguageToggle from './AnimatedLanguageToggle'
 
 const ContactModal = dynamic(() => import('./ContactModal'), { ssr: false })
 
@@ -100,9 +102,7 @@ export default function Navbar() {
     { name: t('nav.contact'), href: '/kontak' },
   ]
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'id' ? 'en' : 'id')
-  }
+
 
   const openMenu = () => {
     setIsMenuOpen(true)
@@ -161,7 +161,7 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+              <AnimatedLink href="/" className="flex items-center space-x-2 sm:space-x-3">
                 <div className="relative">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
                     <Image 
@@ -181,47 +181,32 @@ export default function Navbar() {
                     ACADEMIA
                   </span>
                 </div>
-              </Link>
+              </AnimatedLink>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
               {navigation.map((item) => (
-                <Link
+                <AnimatedLink
                   key={item.name}
                   href={item.href}
                   className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 relative group whitespace-nowrap"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-200 group-hover:w-full"></span>
-                </Link>
+                </AnimatedLink>
               ))}
             </div>
 
             {/* Right Side Icons */}
             <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-              {/* Language Toggle Button - More compact on mobile */}
-              <button
-                onClick={toggleLanguage}
-                className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200"
-              >
-                <span className="text-sm font-medium text-blue-700">
-                  {language === 'id' ? '🇮🇩 ID' : '🇺🇸 EN'}
-                </span>
-                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                </svg>
-              </button>
-
-              {/* Compact Language Toggle for Mobile */}
-              <button
-                onClick={toggleLanguage}
-                className="sm:hidden flex items-center px-2 py-1 rounded-md bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200"
-              >
-                <span className="text-xs font-medium text-blue-700">
-                  {language === 'id' ? '🇮🇩' : '🇺🇸'}
-                </span>
-              </button>
+              {/* Animated Language Toggle */}
+              <div className="hidden sm:block">
+                <AnimatedLanguageToggle />
+              </div>
+              <div className="sm:hidden">
+                <AnimatedLanguageToggle compact />
+              </div>
 
               {/* Search Bar */}
             <div className="relative flex-grow flex items-center mx-2 sm:mx-4 md:mx-6 lg:mx-8">
@@ -233,9 +218,9 @@ export default function Navbar() {
                 placeholder={t('nav.searchPlaceholder') || 'Search...'}
                 className="w-full px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
               />
-              <div ref={searchResultsRef} className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto z-50" style={{ opacity: 0, height: 0, overflow: 'hidden' }}>
+                              <div ref={searchResultsRef} className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto z-50" style={{ opacity: 0, height: 0, overflow: 'hidden' }}>
                   {searchResults.map((result, index) => (
-                    <Link
+                    <AnimatedLink
                       key={index}
                       href={result.href}
                       className="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-gray-800 group"
@@ -244,7 +229,7 @@ export default function Navbar() {
                       <span className="mr-2 text-base group-hover:animate-bounce">{getIconForType(result.type)}</span>
                       <span className="flex-1">{result.title}</span>
                       <span className="text-xs text-gray-500 ml-2">({result.type})</span>
-                    </Link>
+                    </AnimatedLink>
                   ))}
                 </div>
             </div>
@@ -325,7 +310,7 @@ export default function Navbar() {
                   <div className="px-6 py-4">
                     <div className="space-y-1">
                       {navigation.map((item) => (
-                        <Link
+                        <AnimatedLink
                           key={item.name}
                           href={item.href}
                           className="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
@@ -335,7 +320,7 @@ export default function Navbar() {
                           <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                        </Link>
+                        </AnimatedLink>
                       ))}
                     </div>
 
@@ -355,20 +340,9 @@ export default function Navbar() {
                       </button>
                       
                       {/* Language Toggle */}
-                      <button
-                        onClick={() => {
-                          toggleLanguage()
-                          closeMenu()
-                        }}
-                        className="flex items-center w-full px-4 py-3 text-sm font-medium bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 hover:from-blue-100 hover:to-purple-100 rounded-xl transition-all duration-200 border border-blue-200"
-                      >
-                        <svg className="w-5 h-5 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                        </svg>
-                        <span className="flex-1 text-left">
-                          {language === 'id' ? '🇮🇩 Bahasa Indonesia' : '🇺🇸 English'}
-                        </span>
-                      </button>
+                      <div className="px-4 py-3">
+                        <AnimatedLanguageToggle />
+                      </div>
                     </div>
                   </div>
 
