@@ -135,6 +135,11 @@ export default function AnimatedLanguageToggle({ compact = false }: AnimatedLang
           className="absolute bottom-1 left-1 w-1 h-1 bg-yellow-300 rounded-full"
           style={{ animationDelay: '0.2s' }}
         />
+        <motion.div
+          variants={sparkleVariants}
+          className="absolute top-0.5 left-0.5 w-0.5 h-0.5 bg-yellow-300 rounded-full"
+          style={{ animationDelay: '0.4s' }}
+        />
         
         {/* Content */}
         <div className="relative flex items-center space-x-1.5">
@@ -163,6 +168,14 @@ export default function AnimatedLanguageToggle({ compact = false }: AnimatedLang
           initial={{ scale: 0, opacity: 0 }}
           whileHover={{ scale: 1, opacity: [0, 0.4, 0] }}
           transition={{ duration: 0.6 }}
+        />
+
+        {/* Glow effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-lg blur-sm"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
         />
       </motion.button>
     )
