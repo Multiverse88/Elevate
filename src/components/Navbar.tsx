@@ -26,6 +26,8 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
+  const [isSearchFocused, setIsSearchFocused] = useState(false)
+  const [selectedResultIndex, setSelectedResultIndex] = useState(-1)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const searchResultsRef = useRef<HTMLDivElement>(null)
@@ -77,7 +79,7 @@ export default function Navbar() {
 
   // Animate search results dropdown
   useEffect(() => {
-    if (searchQuery.length > 0 && searchResults.length > 0) {
+    if (searchQuery.length > 0 && searchResults.length > 0 && isSearchFocused) {
       gsap.to(searchResultsRef.current, {
         opacity: 1,
         height: 'auto',
@@ -88,11 +90,48 @@ export default function Navbar() {
       gsap.to(searchResultsRef.current, {
         opacity: 0,
         height: 0,
-        duration: 0.3,
+        duration: 0.2,
         ease: 'power2.in',
       });
     }
-  }, [searchResults, searchQuery]);
+  }, [searchResults, searchQuery, isSearchFocused]);
+
+  // Keyboard navigation for search results
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isSearchFocused || searchResults.length === 0) return;
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          setSelectedResultIndex(prev => 
+            prev < searchResults.length - 1 ? prev + 1 : 0
+          );
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setSelectedResultIndex(prev => 
+            prev > 0 ? prev - 1 : searchResults.length - 1
+          );
+          break;
+        case 'Enter':
+          e.preventDefault();
+          if (selectedResultIndex >= 0 && selectedResultIndex < searchResults.length) {
+            handleSuggestionClick(searchResults[selectedResultIndex].href);
+          }
+          break;
+        case 'Escape':
+          setSearchQuery('');
+          setSearchResults([]);
+          setIsSearchFocused(false);
+          searchInputRef.current?.blur();
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isSearchFocused, searchResults, selectedResultIndex]);
 
   const navigation = [
     { name: t('nav.home'), href: '/' },
@@ -101,8 +140,6 @@ export default function Navbar() {
     { name: t('nav.articles'), href: '/artikel' },
     { name: t('nav.contact'), href: '/kontak' },
   ]
-
-
 
   const openMenu = () => {
     setIsMenuOpen(true)
@@ -117,6 +154,7 @@ export default function Navbar() {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value
     setSearchQuery(query)
+    setSelectedResultIndex(-1) // Reset selection when query changes
 
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current)
@@ -134,25 +172,73 @@ export default function Navbar() {
     }, 300)
   }
 
+  const handleSearchFocus = () => {
+    setIsSearchFocused(true)
+    if (searchQuery.length > 0 && searchResults.length > 0) {
+      gsap.to(searchResultsRef.current, {
+        opacity: 1,
+        height: 'auto',
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    }
+  }
+
+  const handleSearchBlur = () => {
+    // Delay to allow for clicks on search results
+    setTimeout(() => {
+      setIsSearchFocused(false)
+      setSelectedResultIndex(-1)
+    }, 150)
+  }
+
   const handleSuggestionClick = (href: string) => {
     router.push(href)
     setSearchQuery('') // Clear search query
     setSearchResults([]) // Clear search results
+    setSelectedResultIndex(-1)
+    setIsSearchFocused(false)
     closeMenu()
   }
 
   const getIconForType = (type: string) => {
     switch (type) {
       case 'page':
-        return '📄' // Document icon
+        return (
+          <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+        )
       case 'service':
-        return '💡' // Lightbulb icon
+        return (
+          <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+        )
       case 'article':
-        return '✍️' // Writing hand icon
+        return (
+          <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+        )
       default:
-        return '🔍' // Default search icon
+        return (
+          <div className="w-6 h-6 bg-gradient-to-br from-gray-500 to-gray-600 rounded-lg flex items-center justify-center">
+            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        )
     }
   }
+
+
 
   return (
     <>
@@ -208,32 +294,99 @@ export default function Navbar() {
                 <AnimatedLanguageToggle compact />
               </div>
 
-              {/* Search Bar */}
-            <div className="relative flex-grow flex items-center mx-2 sm:mx-4 md:mx-6 lg:mx-8">
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                placeholder={t('nav.searchPlaceholder') || 'Search...'}
-                className="w-full px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-              />
-                              <div ref={searchResultsRef} className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto z-50" style={{ opacity: 0, height: 0, overflow: 'hidden' }}>
-                  {searchResults.map((result, index) => (
-                    <AnimatedLink
-                      key={index}
-                      href={result.href}
-                      className="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-gray-800 group"
-                      onClick={() => handleSuggestionClick(result.href)}
+              {/* Enhanced Search Bar */}
+              <div className="relative flex-grow flex items-center mx-2 sm:mx-4 md:mx-6 lg:mx-8">
+                <div className="relative w-full">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    onFocus={handleSearchFocus}
+                    onBlur={handleSearchBlur}
+                    placeholder={t('nav.searchPlaceholder') || 'Cari layanan, artikel...'}
+                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white hover:border-gray-400"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => {
+                        setSearchQuery('')
+                        setSearchResults([])
+                        setSelectedResultIndex(-1)
+                        searchInputRef.current?.focus()
+                      }}
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
                     >
-                      <span className="mr-2 text-base group-hover:animate-bounce">{getIconForType(result.type)}</span>
-                      <span className="flex-1">{result.title}</span>
-                      <span className="text-xs text-gray-500 ml-2">({result.type})</span>
-                    </AnimatedLink>
-                  ))}
+                      <svg className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
                 </div>
-            </div>
 
+                {/* Enhanced Search Results Dropdown */}
+                <div 
+                  ref={searchResultsRef} 
+                  className="absolute top-full left-0 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg max-h-64 overflow-hidden z-50"
+                  style={{ opacity: 0, height: 0, overflow: 'hidden' }}
+                >
+                  {searchResults.length > 0 ? (
+                    <div className="max-h-64 overflow-y-auto">
+                      {searchResults.map((result, index) => {
+                        const isSelected = index === selectedResultIndex
+                        return (
+                          <button
+                            key={index}
+                            onClick={() => handleSuggestionClick(result.href)}
+                            onMouseEnter={() => setSelectedResultIndex(index)}
+                            className={`w-full flex items-center px-4 py-3 transition-all duration-200 group ${
+                              isSelected 
+                                ? 'bg-blue-50 border-l-4 border-blue-500' 
+                                : 'hover:bg-gray-50 border-l-4 border-transparent'
+                            }`}
+                          >
+                            <div className="flex-shrink-0 mr-3">
+                              {getIconForType(result.type)}
+                            </div>
+                            <div className="flex-1 text-left min-w-0">
+                              <div className={`text-sm font-medium truncate transition-colors ${
+                                isSelected ? 'text-blue-700' : 'text-gray-800 group-hover:text-gray-900'
+                              }`}>
+                                {result.title}
+                              </div>
+                              <div className="text-xs text-gray-500 mt-0.5">
+                                {result.type === 'page' ? 'Halaman' : result.type === 'service' ? 'Layanan' : result.type === 'article' ? 'Artikel' : 'Hasil'}
+                              </div>
+                            </div>
+                            <div className="flex-shrink-0 ml-2">
+                              <svg className={`w-4 h-4 transition-all duration-200 ${
+                                isSelected ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-600'
+                              }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                          </button>
+                        )
+                      })}
+                    </div>
+                  ) : searchQuery.length > 0 ? (
+                    <div className="py-6 px-4 text-center">
+                      <div className="w-10 h-10 mx-auto mb-3 bg-gray-100 rounded-full flex items-center justify-center">
+                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                      </div>
+                      <p className="text-sm text-gray-500">Tidak ada hasil untuk "{searchQuery}"</p>
+                      <p className="text-xs text-gray-400 mt-1">Coba kata kunci lain</p>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
 
               {/* Consultation Button - Responsive sizing */}
               <button
