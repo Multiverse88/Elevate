@@ -11,6 +11,7 @@ interface PriceCardProps {
     duration: { id: string; en: string }
     features: { id: string[]; en: string[] }
     popular?: boolean
+    badge?: string
   }
   index: number
 }
@@ -23,10 +24,14 @@ export default function PriceCard({ pkg, index }: PriceCardProps) {
         pkg.popular ? 'border-blue-500' : 'border-transparent'
       }`}
     >
-      {pkg.popular && (
+      {(pkg.popular || pkg.badge) && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
-            Populer
+          <span className={`text-white px-6 py-2 rounded-full text-sm font-semibold ${
+            pkg.badge 
+              ? 'bg-gradient-to-r from-orange-500 to-red-500' 
+              : 'bg-gradient-to-r from-blue-600 to-purple-600'
+          }`}>
+            {pkg.badge || 'Populer'}
           </span>
         </div>
       )}

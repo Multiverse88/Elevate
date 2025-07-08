@@ -7,6 +7,7 @@ interface CategoryPriceSectionProps {
   categoryData: {
     title: { id: string; en: string }
     icon: string
+    description?: { id: string; en: string }
     packages: {
       name: string
       price: string
@@ -14,6 +15,7 @@ interface CategoryPriceSectionProps {
       duration: { id: string; en: string }
       features: { id: string[]; en: string[] }
       popular?: boolean
+      badge?: string
     }[]
   }
   isFiltered: boolean
@@ -31,6 +33,11 @@ export default function CategoryPriceSection({ categoryData, isFiltered }: Categ
             <span className="mr-2 sm:mr-3">{categoryData.icon}</span>
             {categoryData.title[language as keyof typeof categoryData.title]}
           </h2>
+          {categoryData.description && (
+            <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto px-4">
+              {categoryData.description[language as keyof typeof categoryData.description]}
+            </p>
+          )}
         </div>
       )}
 
