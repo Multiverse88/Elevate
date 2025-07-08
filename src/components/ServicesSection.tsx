@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -13,7 +14,7 @@ if (typeof window !== 'undefined') {
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+  const cardsRef = useRef<(HTMLAnchorElement | null)[]>([])
   const { t } = useLanguage()
 
   const services = [
@@ -23,6 +24,7 @@ export default function ServicesSection() {
       icon: '/images/icons/suitcase.png',
       color: 'from-blue-500 to-purple-600',
       bgColor: 'bg-blue-50',
+      href: '/harga?category=skripsi'
     },
     {
       title: t('services.publication'),
@@ -30,6 +32,7 @@ export default function ServicesSection() {
       icon: '/images/icons/book.png',
       color: 'from-green-500 to-blue-600',
       bgColor: 'bg-green-50',
+      href: '/harga?category=publikasi-jurnal'
     },
     {
       title: t('services.workshop'),
@@ -37,6 +40,23 @@ export default function ServicesSection() {
       icon: '/images/icons/video-conference.png',
       color: 'from-orange-500 to-red-600',
       bgColor: 'bg-orange-50',
+      href: '/harga?category=workshop'
+    },
+    {
+      title: t('services.consultation'),
+      desc: t('services.consultation.desc'),
+      icon: '/images/icons/semester.png',
+      color: 'from-purple-500 to-indigo-600',
+      bgColor: 'bg-purple-50',
+      href: '/harga?category=konsultasi'
+    },
+    {
+      title: t('services.custom'),
+      desc: t('services.custom.desc'),
+      icon: '/images/icons/suitcase.png',
+      color: 'from-yellow-500 to-orange-600',
+      bgColor: 'bg-yellow-50',
+      href: '/harga?category=all-you-can-request'
     },
   ]
 
@@ -131,12 +151,13 @@ export default function ServicesSection() {
           {t('services.title')}
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {services.map((service, idx) => (
-            <div 
+            <Link 
               key={idx} 
+              href={service.href}
               ref={el => { cardsRef.current[idx] = el }}
-              className={`${service.bgColor} p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden`}
+              className={`${service.bgColor} p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden block`}
             >
               {/* Background gradient overlay */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -171,7 +192,7 @@ export default function ServicesSection() {
               {/* Floating decorative dots */}
               <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full opacity-30"></div>
               <div className="absolute bottom-4 left-4 w-1 h-1 bg-purple-400 rounded-full opacity-40"></div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -24,17 +24,9 @@ export default function CategoriesSection() {
       textColor: 'text-green-700'
     },
     { 
-      id: 'penulisan-artikel-sinta',
-      title: t('categories.penulisanArtikelSinta'), 
-      icon: '✍️',
-      bgColor: 'bg-gradient-to-br from-purple-50 to-pink-50',
-      iconBg: 'bg-gradient-to-br from-purple-100 to-pink-100',
-      textColor: 'text-purple-700'
-    },
-    { 
       id: 'workshop',
       title: t('categories.workshop'), 
-      icon: '🎓',
+      icon: '🎤',
       bgColor: 'bg-gradient-to-br from-orange-50 to-red-50',
       iconBg: 'bg-gradient-to-br from-orange-100 to-red-100',
       textColor: 'text-orange-700'
@@ -42,18 +34,18 @@ export default function CategoriesSection() {
     { 
       id: 'konsultasi',
       title: t('categories.konsultasi'), 
-      icon: '🔬',
-      bgColor: 'bg-gradient-to-br from-indigo-50 to-blue-50',
-      iconBg: 'bg-gradient-to-br from-indigo-100 to-blue-100',
-      textColor: 'text-indigo-700'
+      icon: '💼',
+      bgColor: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+      iconBg: 'bg-gradient-to-br from-purple-100 to-indigo-100',
+      textColor: 'text-purple-700'
     },
     { 
-      id: 'mentoring',
-      title: t('categories.mentoring'), 
-      icon: '👨‍🏫',
-      bgColor: 'bg-gradient-to-br from-teal-50 to-green-50',
-      iconBg: 'bg-gradient-to-br from-teal-100 to-green-100',
-      textColor: 'text-teal-700'
+      id: 'all-you-can-request',
+      title: t('categories.allYouCanRequest'), 
+      icon: '✨',
+      bgColor: 'bg-gradient-to-br from-yellow-50 to-orange-50',
+      iconBg: 'bg-gradient-to-br from-yellow-100 to-orange-100',
+      textColor: 'text-yellow-700'
     },
   ]
 
@@ -83,7 +75,7 @@ export default function CategoriesSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
           {categories.map((category, idx) => (
             <Link 
               key={idx}

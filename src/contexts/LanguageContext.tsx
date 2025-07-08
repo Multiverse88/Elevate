@@ -40,6 +40,10 @@ const translations = {
     'services.publication.desc': 'Submit & revisi untuk SINTA, Scopus, WoS.',
     'services.workshop': 'Event Organizer Workshop Akademik',
     'services.workshop.desc': 'Webinar, kuliah tamu, pelatihan menulis, dll.',
+    'services.consultation': 'Konsultasi Penelitian',
+    'services.consultation.desc': 'Bimbingan intensif dengan mentor berpengalaman.',
+    'services.custom': 'All You Can Request',
+    'services.custom.desc': 'Layanan akademik khusus sesuai kebutuhan Anda.',
     
     // Categories Section
     'categories.badge': 'Layanan Kami',
@@ -51,7 +55,7 @@ const translations = {
     'categories.penulisanArtikelSinta': 'Penulisan Artikel',
     'categories.workshop': 'Workshop Akademik',
     'categories.konsultasi': 'Konsultasi Penelitian',
-    'categories.mentoring': 'Personal Mentoring',
+    'categories.allYouCanRequest': 'All You Can Request',
     
     // About Section
     'about.badge': 'Tentang Kami',
@@ -240,6 +244,10 @@ const translations = {
     'services.publication.desc': 'Submit & revise for SINTA, Scopus, WoS.',
     'services.workshop': 'Academic Workshop Event Organizer',
     'services.workshop.desc': 'Webinars, guest lectures, writing training, etc.',
+    'services.consultation': 'Research Consultation',
+    'services.consultation.desc': 'Intensive guidance with experienced mentors.',
+    'services.custom': 'All You Can Request',
+    'services.custom.desc': 'Custom academic services according to your needs.',
     
     // Categories Section
     'categories.badge': 'Our Services',
@@ -251,7 +259,7 @@ const translations = {
     'categories.penulisanArtikelSinta': 'Article Writing',
     'categories.workshop': 'Academic Workshop',
     'categories.konsultasi': 'Research Consultation',
-    'categories.mentoring': 'Personal Mentoring',
+    'categories.allYouCanRequest': 'All You Can Request',
     
     // About Section
     'about.badge': 'About Us',
