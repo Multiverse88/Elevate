@@ -47,7 +47,7 @@ const translations = {
     
     // Categories Section
     'categories.badge': 'Layanan Kami',
-    'categories.title': 'Jelajahi Kategori Layanan',
+    'categories.title': 'Jelajahi Layanan Kami',
     'categories.subtitle': 'Kami menyediakan berbagai layanan akademik berkualitas tinggi untuk membantu Anda mencapai kesuksesan dalam perjalanan pendidikan dan penelitian.',
     'categories.all': 'Semua Layanan',
     'categories.skripsi': 'Penulisan Skripsi',
