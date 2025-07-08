@@ -4,6 +4,7 @@ import ClientCategoriesSection from '@/components/client-wrappers/ClientCategori
 import ClientAboutUsSection from '@/components/client-wrappers/ClientAboutUsSection'
 import ClientCoachingSection from '@/components/client-wrappers/ClientCoachingSection'
 import ClientContactSection from '@/components/client-wrappers/ClientContactSection'
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <ClientAboutUsSection />
       <ClientCoachingSection />
       <ClientContactSection />
+      <Analytics />
     </div>
   )
 }
