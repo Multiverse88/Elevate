@@ -92,10 +92,10 @@ export default function Layanan() {
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 shadow-md">
                     <span className="text-2xl">{service.icon}</span>
-                  </div>
+            </div>
                   <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
-                </div>
-                
+          </div>
+
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {service.description}
                 </p>
@@ -109,16 +109,16 @@ export default function Layanan() {
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
-                </ul>
+              </ul>
                 
-                <Link
+              <Link
                   href={service.href}
                   className={`block text-center ${service.buttonColor} text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
-                >
+              >
                   Lihat Paket & Harga
-                </Link>
-              </div>
-              
+              </Link>
+          </div>
+
               {/* Decorative elements */}
               <div className="absolute top-4 right-4 w-2 h-2 bg-white bg-opacity-50 rounded-full"></div>
               <div className="absolute bottom-4 left-4 w-1 h-1 bg-white bg-opacity-30 rounded-full"></div>
@@ -133,12 +133,12 @@ export default function Layanan() {
             <p className="text-lg mb-6 opacity-90">
               Hubungi kami untuk konsultasi gratis dan dapatkan solusi akademik yang tepat untuk kebutuhan Anda
             </p>
-            <Link
+              <Link
               href="/kontak"
               className="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg"
-            >
+              >
               Konsultasi Gratis Sekarang
-            </Link>
+              </Link>
           </div>
         </div>
       </div>

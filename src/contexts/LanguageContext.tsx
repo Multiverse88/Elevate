@@ -47,7 +47,7 @@ const translations = {
     
     // Categories Section
     'categories.badge': 'Layanan Kami',
-    'categories.title': 'Jelajahi Layanan Kami',
+    'categories.title': 'Jelajahi Kategori Layanan',
     'categories.subtitle': 'Kami menyediakan berbagai layanan akademik berkualitas tinggi untuk membantu Anda mencapai kesuksesan dalam perjalanan pendidikan dan penelitian.',
     'categories.all': 'Semua Layanan',
     'categories.skripsi': 'Penulisan Skripsi',
@@ -119,14 +119,18 @@ const translations = {
 
     // Price Page
     'price.badge': 'Daftar Harga',
-    'price.title': 'Daftar Harga Layanan',
-    'price.subtitle': 'Pilih paket yang sesuai dengan kebutuhan akademik Anda',
+    'price.title': 'List Layanan Kami',
+    'price.subtitle': 'Mulai konsultasi gratis, lalu tingkatkan untuk membuka lebih banyak fitur.',
+    'price.description': 'Pilih paket yang sesuai dengan kebutuhan akademik Anda. Semua paket dilengkapi dengan bimbingan profesional dan garansi kualitas.',
     'price.allServices': 'Semua Layanan',
-    'price.consultationTitle': 'Butuh Konsultasi Khusus?',
-    'price.consultationSubtitle': 'Tim ahli kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan akademik Anda',
+    'price.backToServices': '← Kembali ke semua layanan',
+    'price.consultationTitle': 'Butuh Paket Khusus?',
+    'price.consultationSubtitle': 'Tim ahli kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan akademik yang spesifik',
     'price.contactButton': 'Hubungi Kami →',
     'price.popular': 'Populer',
     'price.choosePackage': 'Pilih Paket',
+    'price.freeConsultation': 'Konsultasi Gratis',
+    'price.loading': 'Loading...',
 
     // Price Page - Skripsi
     'price.skripsi.title': 'Penulisan Skripsi',
@@ -323,14 +327,18 @@ const translations = {
 
     // Price Page
     'price.badge': 'Price List',
-    'price.title': 'Service Price List',
-    'price.subtitle': 'Choose the package that suits your academic needs',
+    'price.title': 'Our Service List',
+    'price.subtitle': 'Start with free consultation, then upgrade to unlock more features.',
+    'price.description': 'Choose a package that suits your academic needs. All packages come with professional guidance and quality guarantee.',
     'price.allServices': 'All Services',
-    'price.consultationTitle': 'Need Special Consultation?',
-    'price.consultationSubtitle': 'Our expert team is ready to help you find the best solution for your academic needs',
+    'price.backToServices': '← Back to all services',
+    'price.consultationTitle': 'Need Custom Package?',
+    'price.consultationSubtitle': 'Our expert team is ready to help you find the best solution for your specific academic needs',
     'price.contactButton': 'Contact Us →',
     'price.popular': 'Popular',
     'price.choosePackage': 'Choose Package',
+    'price.freeConsultation': 'Free Consultation',
+    'price.loading': 'Loading...',
 
     // Price Page - Skripsi
     'price.skripsi.title': 'Thesis Writing',
@@ -349,7 +357,7 @@ const translations = {
 
     // Price Page - Publikasi Jurnal
     'price.publikasiJurnal.title': 'Journal Publication',
-    'price.publikasiJurnal.variatif': 'Variative',
+    'price.publikasiJurnal.variatif': 'Variable',
     'price.publikasiJurnal.features.0': '100% Publication Guarantee',
     'price.publikasiJurnal.features.1': 'Includes PJIR and journal APC',
     'price.publikasiJurnal.features.2': '2x Payment (50% DP, rest upon LoA issuance)',

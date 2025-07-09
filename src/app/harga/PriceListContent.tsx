@@ -22,7 +22,7 @@ interface PriceCardProps {
 }
 
 function PriceCard({ pkg, index, categoryId }: PriceCardProps) {
-  const { language } = useLanguage()
+  const { language, t } = useLanguage()
   
   const getTierStyle = () => {
     if (pkg.tier === 'free') {
@@ -73,7 +73,7 @@ function PriceCard({ pkg, index, categoryId }: PriceCardProps) {
                 ? 'bg-gradient-to-r from-orange-500 to-red-500' 
                 : 'bg-gradient-to-r from-purple-600 to-blue-600'
             }`}>
-              {pkg.badge || 'Populer'}
+              {pkg.badge || t('price.popular')}
             </span>
           </motion.div>
         )}
@@ -127,7 +127,7 @@ function PriceCard({ pkg, index, categoryId }: PriceCardProps) {
           href={pkg.tier === 'free' ? "https://wa.me/6283121451587?text=Halo, saya tertarik dengan konsultasi gratis" : "https://wa.me/6283121451587"}
           className={`block w-full text-center py-3 px-6 rounded-xl font-semibold transition-all duration-300 text-sm ${tierStyle.button}`}
         >
-          {pkg.tier === 'free' ? 'Konsultasi Gratis' : 'Pilih Paket'}
+          {pkg.tier === 'free' ? t('price.freeConsultation') : t('price.choosePackage')}
         </Link>
       </motion.div>
     </motion.div>
@@ -738,7 +738,7 @@ function PriceListContentComponent() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
           >
-            Paket Harga
+            {t('price.title')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -746,7 +746,7 @@ function PriceListContentComponent() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto mb-4"
           >
-            Mulai konsultasi gratis, lalu tingkatkan untuk membuka lebih banyak fitur.
+            {t('price.subtitle')}
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -754,7 +754,7 @@ function PriceListContentComponent() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-base text-gray-500 max-w-2xl mx-auto"
           >
-            Pilih paket yang sesuai dengan kebutuhan akademik Anda. Semua paket dilengkapi dengan bimbingan profesional dan garansi kualitas.
+            {t('price.description')}
           </motion.p>
         </motion.div>
 
@@ -799,7 +799,7 @@ function PriceListContentComponent() {
               href="/harga" 
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
             >
-              ← Kembali ke semua layanan
+              {t('price.backToServices')}
             </Link>
           </motion.div>
         )}
@@ -854,9 +854,9 @@ function PriceListContentComponent() {
           className="text-center mt-20"
         >
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Butuh Paket Khusus?</h3>
+            <h3 className="text-2xl font-bold mb-4">{t('price.consultationTitle')}</h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Tim ahli kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan akademik yang spesifik
+              {t('price.consultationSubtitle')}
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -866,7 +866,7 @@ function PriceListContentComponent() {
                 href="https://wa.me/6283121451587"
                 className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
               >
-                Hubungi Kami →
+                {t('price.contactButton')}
               </Link>
             </motion.div>
           </div>
